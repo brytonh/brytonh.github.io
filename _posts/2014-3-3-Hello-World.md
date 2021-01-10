@@ -1,4 +1,4 @@
 ---
 layout: post
-title:
+title: No blog posts yet
 ---
