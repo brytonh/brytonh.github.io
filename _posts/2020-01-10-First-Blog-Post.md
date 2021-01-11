@@ -9,7 +9,7 @@ It was brutal. It was exhausting. It was a pain. And - it was well worth it.
 
 When I was going through the constant studying, I often would look for other candidates' documented experiences with the JNCIE journey or exam. I would search for blogs that outlined the experience, what to expect, and how to cope with the JNCIE learning process in general. I found many sources, [networkfuntimes.com](https://networkfuntimes.com), [momcanfixanything.com](https://momcanfixanything.com), [fryguy.net](https://fryguy.net) and [inetzero](https://inetzero.com) to name a few. It was so helpful being able to see that other people had went through this same journey, this same obsession with learning the content, and that they had survived and thrived at the end by passing. 
 
-Because it helped me so much along the way, I wanted to write a similar blog post as my first, letting the world know what helped me during the process, my favorite list of books or other sources, what was unique about my experience, and why yours may be similar or why it might be completely different. 
+Because it helped me so much along the way, I wanted to write a similar blog post as my first blog EVER, letting the world know what helped me during the process, my favorite list of books or other sources, what was unique about my experience, and why yours may be similar or why it might be completely different. 
 
 --- 
 
@@ -32,7 +32,7 @@ I would recommend knowing the material backwards and forwards as well as you can
 1. Juniper JNCIE-SP Self-Study Bundle 
 	* The most valuable source of all, jam-packed with examples, readings, and scenarios specific to the JNCIE-SP
 2. MPLS in the SDN Era (Book) 
-	* I can't say enough about this book, and thank you to Chris @ networkfuntimes.com for originally mentioning it in one of his blog posts. It was and still is an amazing source of knowledge for IP/MPLS networks. 
+	* I can't say enough about this book, and thank you to Chris @ [networkfuntimes](networkfuntimes.com) for originally mentioning it in one of his blog posts. It was and still is an amazing source of knowledge for IP/MPLS networks. 
 3. Day One: Deploying Basic QoS (Juniper Day-One Book)
 4. Juniper Official Examples and TechLibrary
 5. OSPF and IS-IS: Choosing an IGP for Large-scale Networks (Book)
