@@ -33,7 +33,7 @@ I would recommend knowing the material backwards and forwards as well as you can
 	* The most valuable source of all, jam-packed with examples, readings, and scenarios specific to the JNCIE-SP blueprint
 2. MPLS in the SDN Era (Book) 
 	* I can't say enough about this book, and thank you to Chris @ [networkfuntimes](networkfuntimes.com) for originally mentioning it in one of his blog posts. It was and still is an amazing source of knowledge for IP/MPLS networks. 
-3. Day One: Deploying Basic QoS (Juniper Day-One Book)
+3. Day One: Deploying Basic QoS
 4. Juniper Official Examples and TechLibrary
 5. OSPF and IS-IS: Choosing an IGP for Large-scale Networks (Book)
 6. All of the JNCIP-SP recommended trainings from Juniper
