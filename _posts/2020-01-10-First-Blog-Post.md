@@ -36,13 +36,13 @@ I would recommend knowing the material backwards and forwards as well as you can
 3. Day One: Deploying Basic QoS (Juniper Day-One Book)
 4. Juniper Official Examples and TechLibrary
 5. OSPF and IS-IS: Choosing an IGP for Large-scale Networks (Book)
-6. All of the JNCIP-SP recommended trainings 
+6. All of the JNCIP-SP recommended trainings from Juniper
 7. Day one: Deploying MPLS 
 
 ## What lab environment did I use? 
 EVE-NG with both vMX and vSRX routers. This was definitely enough on the right hardware, and I recommend bare metal. I'm running EVE-NG on baremetal now with some decent hardware and it is amazing how quickly things start and perform. It's well worth having a lab for rehearsing these exams situations.
 
-Disclaimer - Just because these are the materials that I used to study doesn't mean this is a comprehensive list of what will get you to your "PASS"
+*Disclaimer - Just because these are the materials that I used to study doesn't mean this is a comprehensive list of what will get you to your "PASS"*
 
-Happy studying! 
+### Happy studying! 
 
