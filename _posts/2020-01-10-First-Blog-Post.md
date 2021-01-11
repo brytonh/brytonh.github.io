@@ -30,7 +30,7 @@ I would recommend knowing the material backwards and forwards as well as you can
 ## What did I use to study? 
 
 1. Juniper JNCIE-SP Self-Study Bundle 
-	* The most valuable source of all, jam-packed with examples, readings, and scenarios specific to the JNCIE-SP
+	* The most valuable source of all, jam-packed with examples, readings, and scenarios specific to the JNCIE-SP blueprint
 2. MPLS in the SDN Era (Book) 
 	* I can't say enough about this book, and thank you to Chris @ [networkfuntimes](networkfuntimes.com) for originally mentioning it in one of his blog posts. It was and still is an amazing source of knowledge for IP/MPLS networks. 
 3. Day One: Deploying Basic QoS (Juniper Day-One Book)
