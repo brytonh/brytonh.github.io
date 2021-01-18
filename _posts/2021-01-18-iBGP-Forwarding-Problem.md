@@ -322,7 +322,7 @@ This router is called the Penultimate-Hop Popping router (PHP), meaning before t
 At PE3, the router looks at its inet.0 table because the packet was received unlabeled and sends the packet addressed for 198.51.100.1 toward AS64510-CE. 
 
 ---
-Pros and Cons of Each option of the 3 we covered for solving the iBGP forwarding problem - 
+Pros and Cons of each option of the 3 we covered for solving the iBGP forwarding problem - 
 1. Full-Mesh iBGP 
 	- Pros: No redistribution necessary from BGP->IGP, Every iBGP router can act as a PE down the road 
 	- Cons: Admin overhead of configuring more iBGP neighbors (Reflection helps but still overhead per RR neighbor and RR config)
