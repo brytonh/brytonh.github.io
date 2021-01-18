@@ -185,9 +185,9 @@ inet.0: 9 destinations, 9 routes (9 active, 0 holddown, 0 hidden)
                     >  to 100.64.0.2 via ge-0/0/1.0
 ```
 
-Please note that method #2 will not scale, as your IGP won't be able to handle the amount of prefixes you'll be learning and working with in a real environment. This is an outdated method of "fixing" the iBGP forwarding problem. Let's move onto something more scaleable, because all this redistribution has me feeling guilty. 
+Please note that **method #2 will not scale**, as your IGP won't be able to handle the amount of prefixes you'll be learning and working with in a real environment. This is an outdated method of "fixing" the iBGP forwarding problem. Let's move onto something more scaleable, because all this redistribution has me feeling guilty. 
 
-rollback 1, commit, and proceed
+*rollback 1, commit, and proceed*
 
 ## 3. BGP-Free Core 
 My favorite of the three options, the best of both worlds. You get you have your cake and eat it too. We are only going to establish iBGP between PE1 and PE3. The method of forwarding BGP traffic from PE1 to PE3 is going to be achieved by using MPLS LSPs. P2 is turning into a MPLS-switching router. 
