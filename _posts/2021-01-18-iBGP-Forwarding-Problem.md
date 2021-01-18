@@ -228,7 +228,7 @@ inet.3: 1 destinations, 1 routes (1 active, 0 holddown, 0 hidden)
 
 ```
 
-A set of unidirectional LSPs is established. So, what's this have to do with forwarding BGP traffic? Well, the inet.3 table is used for recursive BGP next-hop lookups as well as inet.0. The RSVP or LDP learned LSP routes are more prerfeable than IGP learned routes, so we use the LSP for forwarding. By default BGP traffic is the only traffic that uses the LSPs for forwarding in JunOS. 
+A set of unidirectional LSPs is established. So, what's this have to do with forwarding BGP traffic? Well, the inet.3 table is used for recursive BGP next-hop lookups as well as inet.0. The RSVP or LDP learned LSP routes are more prerfeable than IGP learned routes, so we use the LSP for forwarding. By default BGP traffic is the only traffic that uses the LSPs for forwarding in JunOS. (This can be customized)
 
 Route table from PE3 to AS64510-CE prefix: 
 ```
