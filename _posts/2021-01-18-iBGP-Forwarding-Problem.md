@@ -20,9 +20,9 @@ So... what's the iBGP Forwarding Problem that the title of this blog refers to? 
 ## Topology 
 ![](/images/ibgp-top.png)
 
-AS64610 - Customer 1 
-AS64511 - Our Provider network
-AS64512 - Customer 2
+* AS64510 - Customer 1
+* AS64511 - Our Provider network
+* AS64512 - Customer 2
 
 We are going to accept a BGP prefix from each customer, and advertise it via iBGP between the PEs, and to the other customer. Data forwarding follows the reverse of the flow of advertisements. AS64510 is going to advertise 198.51.100.0/24 and AS64512 is going to advertise 203.0.113.0/24. 
 
