@@ -69,7 +69,7 @@ PING 198.51.100.1 (198.51.100.1): 56 data bytes
 3 packets transmitted, 0 packets received, 100% packet loss
 ```
 
-Uh oh! That's not good, failed pings. Let's follow the packet from AS64512-CE to AS64510-CE. We know the initial route is pointing from the CE to the PE3 router, so let's check out the table at PE3. 
+Uh oh! That's not good, failed. Let's follow the packet from AS64512-CE to AS64510-CE. We know the initial route is pointing from the CE to the PE3 router, so let's check out the table at PE3. 
 ```
 root@PE3# show route 198.51.100.1
 inet.0: 10 destinations, 10 routes (10 active, 0 holddown, 0 hidden)
@@ -85,14 +85,14 @@ root@P2# run show route 198.51.100.0/24
 
 ```
 
-Ah, ha! P2 knows nothing about the prefix. Well how can this be? Well, here's the low-down. We established an iBGP peering between PE1 and PE3, but no peering to P2. By doing this, only PE1 and PE3 know of the routes toward BGP destinations. P2 is completely unaware, and is dropping the traffic to which it knows no route. 
-
+**Ah, ha!** P2 knows nothing about the prefix. Well how can this be? Well, here's the low-down. We established an iBGP peering between PE1 and PE3, but no peering to P2. By doing this, only PE1 and PE3 know of the routes toward BGP destinations. P2 is completely unaware, and is dropping the traffic to which it knows no route. 
+---
 ## Solve the Problem
 3 ways to solve this iBGP forwarding problem. *Not an exhaustive list, not covering tunneling mechanisms outside of establishing MPLS LSPs*
 1. Configure full-mesh of iBGP peering relationships (via explicit configuration of all routers to every other router, Route Reflection, or Confederation peerings)
 2. Use BGP synchronization and make sure that the IGP knows of routes toward BGP destinations (redistribution of BGP into IGP, no thank you)
 3. Configure BGP-Free Core 
-
+---
 ## 1. Full-Mesh iBGP 
 Configuring iBGP on P2, and adding the loopback of P2 to the ibgp group on PE1/PE3 (not shown)
 ```
