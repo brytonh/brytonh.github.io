@@ -333,5 +333,4 @@ Pros and Cons of Each option of the 3 we covered for solving the iBGP forwarding
 	- Pros: No need to configure iBGP on intermediate routers, possibly no licensed BGP needed for core routers, core routers have a simple job swapping/poppping labels and forwarding packets based off of LIB
 	- Cons: Must configure MPLS on all routers, Must have MPLS licensing to configure MPLS 
 
-### Thank you for reading, Attaching all configs [here](/configs/ibgp-post-configs.cfg) for the last BGP-Free Core example :) 
-
+### Thank you for reading, Attaching all configs <a href="\configs/ibgp-post-configs.cfg" target="_blank">here</a> for the last BGP-Free Core example :) 
