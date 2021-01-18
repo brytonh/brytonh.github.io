@@ -192,7 +192,7 @@ Please note that **method #2 will not scale**, as your IGP won't be able to hand
 ## 3. <span style="color:blue">BGP-Free Core </span>
 My favorite of the three options, the best of both worlds. You get you have your cake and eat it too. We are only going to establish iBGP between PE1 and PE3. The method of forwarding BGP traffic from PE1 to PE3 is going to be achieved by using MPLS LSPs. P2 is turning into a MPLS-switching router. 
 
-Note - Make sure you've enabled RSVP and MPLS procols and families.
+*Note - Make sure you've enabled RSVP and MPLS procols and families.*
 
 ```
 root@PE1# show protocols mpls
