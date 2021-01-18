@@ -92,7 +92,7 @@ P2 knows nothing about the prefix. How can this be? Well, here's the low-down. W
 
 ## Solve the Problem
 3 ways to solve this iBGP forwarding problem. *Not an exhaustive list, not covering tunneling mechanisms outside of establishing MPLS LSPs*
-1. Configure full-mesh of iBGP peering relationships (via explicit configuration of all routers to every other router, Route Reflection, or Confederation peerings) everywhere
+1. Configure iBGP peering relationships everywhere (via explicit configuration of all routers to every other router, Route Reflection, or Confederation peerings) 
 2. Use BGP synchronization and make sure that the IGP knows of routes toward BGP destinations (redistribution of BGP into IGP, no thank you)
 3. Configure BGP-Free Core 
 
