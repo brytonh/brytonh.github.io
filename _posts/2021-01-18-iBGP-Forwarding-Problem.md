@@ -84,6 +84,7 @@ root@P2# run show route 198.51.100.0/24
 
 Ah, ha! P2 knows nothing about the prefix. Well how can this be? Well, here's the low-down. We established an iBGP peering between PE1 and PE3, but no peering to P2. By doing this, only PE1 and PE3 know of the routes toward BGP destinations. P2 is completely unaware, and is dropping the traffic to which it knows no route. 
 
+## Solve the Problem
 3 ways to solve this iBGP forwarding problem. *Not an exhaustive list, not covering tunneling mechanisms outside of establishing MPLS LSPs*
 1. Configure full-mesh of iBGP peering relationships (via explicit configuration of all routers to every other router, Route Reflection, or Confederation peerings)
 2. Use BGP synchronization and make sure that the IGP knows of routes toward BGP destinations (redistribution of BGP into IGP, no thank you)
@@ -323,5 +324,5 @@ Pros and Cons of Each option of the 3 we covered for solving the iBGP forwarding
 	- Pros: No need to configure iBGP on intermediate routers, possibly no licensed BGP needed for core routers, core routers have a simple job swapping/poppping labels and forwarding packets based off of LIB
 	- Cons: Must configure MPLS on all routers, Must have MPLS licensing to configure MPLS 
 
-###Thank you for reading, Attaching all configs [here](/configs/ibgp-post-configs.cfg) for the last BGP-Free Core example :) 
+### Thank you for reading, Attaching all configs [here](/configs/ibgp-post-configs.cfg) for the last BGP-Free Core example :) 
 
