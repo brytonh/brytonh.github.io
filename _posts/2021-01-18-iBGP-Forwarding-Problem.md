@@ -3,6 +3,9 @@ layout: post
 title: The iBGP Forwarding Problem 
 --- 
 
+BGP is the answer, what was the question? When learning iBGP in the beginning stages of my SP-networking journey, I loved the idea of keeping intelligence at the edge. But, how do you actually do that? Read to find out what I'm talking about!
+
+
 *If you have a seasoned or well-tuned knowledge of iBGP, you can safely proceed to the Problem section and Topology example*
 
 Advertise infrastructure addresses and loopbacks in the IGP, and just about everything else advertise into BGP. That's the motto we follow in SP networking, and possibly in enterprise and definitely data center networking as well. We are not filling our IGPs with customer prefixes, internet routes, and everything but the kitchen sink. It does not scale and is an expensive operation running thousands of routes in the IGP, not to mention a lot of link-state to flood and keep track of. 
