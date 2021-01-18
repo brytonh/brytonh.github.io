@@ -323,13 +323,13 @@ At PE3, the router looks at its inet.0 table because the packet was received unl
 
 ---
 Pros and Cons of each option of the 3 we covered for solving the iBGP forwarding problem - 
-1. Full-Mesh iBGP 
+1. **Full-Mesh iBGP** 
 	- Pros: No redistribution necessary from BGP->IGP, Every iBGP router can act as a PE down the road 
 	- Cons: Admin overhead of configuring more iBGP neighbors (Reflection helps but still overhead per RR neighbor and RR config)
-2. BGP Synchronization 
+2. **BGP Synchronization** 
 	- Pros: No need to configure iBGP on intermediate core routers 
 	- Cons: Does not scale well, IGP will become overloaded and convergence will slow eventually 
-3. BGP-Free Core 
+3. **BGP-Free Core** 
 	- Pros: No need to configure iBGP on intermediate routers, possibly no licensed BGP needed for core routers, core routers have a simple job swapping/poppping labels and forwarding packets based off of LIB
 	- Cons: Must configure MPLS on all routers, Must have MPLS licensing to configure MPLS 
 
