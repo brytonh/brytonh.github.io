@@ -14,7 +14,7 @@ We know BGP is our swiss army knife protocol of choice, the protocol we love sho
 
 ---
 ## Problem 
-So... what's the iBGP Forwarding Problem that the title of this blog refers to? Well, it may or may not be a problem at all when you first rollout iBGP for the first time depending on whether you go with full-mesh sessions among all routers. But, it's critical to understand that it's something you could run into whether you're a beginner networker or advanced. When you deploy iBGP in your AS, your core routers still need to know what to do with packets. iBGP intelligence only being kept on the PE's is great and all, but the core P routers still need to know enough to make forwawrding decisions. Enough talking, let me show you the problem through an example. 
+So... what's the iBGP Forwarding Problem that the title of this blog refers to? Well, it may or may not be a problem at all when you first rollout iBGP for the first time depending on whether you go with full-mesh sessions among ALL routers. But, it's critical to understand that it's something you could run into whether you're a beginner networker or advanced. When you deploy iBGP in your AS, your core routers still need to know what to do with packets. iBGP intelligence only being kept on the PE's is great and all, but the core P routers still need to know enough to make forwawrding decisions. Enough talking, let me show you the problem through an example. 
 
 --- 
 ## Topology 
@@ -92,12 +92,12 @@ P2 knows nothing about the prefix. How can this be? Well, here's the low-down. W
 
 ## Solve the Problem
 3 ways to solve this iBGP forwarding problem. *Not an exhaustive list, not covering tunneling mechanisms outside of establishing MPLS LSPs*
-1. Configure full-mesh of iBGP peering relationships (via explicit configuration of all routers to every other router, Route Reflection, or Confederation peerings)
+1. Configure full-mesh of iBGP peering relationships (via explicit configuration of all routers to every other router, Route Reflection, or Confederation peerings) everywhere
 2. Use BGP synchronization and make sure that the IGP knows of routes toward BGP destinations (redistribution of BGP into IGP, no thank you)
 3. Configure BGP-Free Core 
 
 ---
-## 1. Full-Mesh iBGP 
+## 1. iBGP Everywhere 
 Configuring iBGP on P2, and adding the loopback of P2 to the ibgp group on PE1/PE3 (not shown)
 ```
 root@P2# show | compare
@@ -323,7 +323,7 @@ At PE3, the router looks at its inet.0 table because the packet was received unl
 
 ---
 Pros and Cons of each option of the 3 we covered for solving the iBGP forwarding problem - 
-1. **Full-Mesh iBGP** 
+1. **iBGP Everywhere** 
 	- Pros: No redistribution necessary from BGP->IGP, Every iBGP router can act as a PE down the road 
 	- Cons: Admin overhead of configuring more iBGP neighbors (Reflection helps but still overhead per RR neighbor and RR config)
 2. **BGP Synchronization** 
