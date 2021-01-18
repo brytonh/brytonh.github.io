@@ -85,7 +85,8 @@ root@P2# run show route 198.51.100.0/24
 
 ```
 
-**Ah, ha!** P2 knows nothing about the prefix. Well how can this be? Well, here's the low-down. We established an iBGP peering between PE1 and PE3, but no peering to P2. By doing this, only PE1 and PE3 know of the routes toward BGP destinations. P2 is completely unaware, and is dropping the traffic to which it knows no route. 
+**Ah, ha!** 
+P2 knows nothing about the prefix. Well how can this be? Well, here's the low-down. We established an iBGP peering between PE1 and PE3, but no peering to P2. By doing this, only PE1 and PE3 know of the routes toward BGP destinations. P2 is completely unaware, and is dropping the traffic to which it knows no route. 
 ---
 ## Solve the Problem
 3 ways to solve this iBGP forwarding problem. *Not an exhaustive list, not covering tunneling mechanisms outside of establishing MPLS LSPs*
