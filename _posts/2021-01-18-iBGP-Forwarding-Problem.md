@@ -94,6 +94,7 @@ P2 knows nothing about the prefix. How can this be? Well, here's the low-down. W
 1. Configure full-mesh of iBGP peering relationships (via explicit configuration of all routers to every other router, Route Reflection, or Confederation peerings)
 2. Use BGP synchronization and make sure that the IGP knows of routes toward BGP destinations (redistribution of BGP into IGP, no thank you)
 3. Configure BGP-Free Core 
+
 ---
 ## 1. Full-Mesh iBGP 
 Configuring iBGP on P2, and adding the loopback of P2 to the ibgp group on PE1/PE3 (not shown)
