@@ -170,7 +170,8 @@ root@PE3# show | compare
 
 Again, pings work and P2 has a route toward the BGP destinations for forwarding. 
 
-```root@AS64512-CE# run ping 198.51.100.1 source 203.0.113.1
+```
+root@AS64512-CE# run ping 198.51.100.1 source 203.0.113.1
 PING 198.51.100.1 (198.51.100.1): 56 data bytes
 64 bytes from 198.51.100.1: icmp_seq=0 ttl=61 time=7.642 ms
 64 bytes from 198.51.100.1: icmp_seq=1 ttl=61 time=6.434 ms
