@@ -14,7 +14,7 @@ We know BGP is our swiss army knife protocol of choice, the protocol we love sho
 
 ---
 ## Problem 
-So... what's the iBGP Forwarding Problem that the title of this blog refers to? Well, it may or may not be a problem at all when you first rollout iBGP for the first time depending on whether you go with full-mesh sessions among ALL routers. But, it's critical to understand that it's something you could run into whether you're a beginner networker or advanced. When you deploy iBGP in your AS, your core routers still need to know what to do with packets. iBGP intelligence only being kept on the PE's is great and all, but the core P routers still need to know enough to make forwawrding decisions. Enough talking, let me show you the problem through an example. 
+So... what's the iBGP Forwarding Problem that the title of this blog refers to? Well, it may or may not be a problem at all when you first rollout iBGP for the first time depending on whether you go with full-mesh sessions among ALL routers. But, it's critical to understand that it's something you could run into whether you're a beginner networker or advanced. When you deploy iBGP in your AS, your core routers still need to know what to do with packets. iBGP intelligence only being kept on the PE's is great and all, but the core P routers still need to know enough to make forwarding decisions. Enough talking, let me show you the problem through an example. 
 
 --- 
 ## Topology 
