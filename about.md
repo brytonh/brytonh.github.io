@@ -11,7 +11,7 @@ All blogs posts and thoughts are my own - not that of my employer.
 ### Resume
 
 Here's my [resume](/images/resume.pdf)
-I may not be looking, but this information is available here or via [LinkedIn](https://linkedin.com/in/brytonjherdes)
+I may not be looking, but this information is publicly available here or via [LinkedIn](https://linkedin.com/in/brytonjherdes)
 
 ### Contact me
 
