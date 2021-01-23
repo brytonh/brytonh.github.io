@@ -242,9 +242,9 @@ inet.0: 10 destinations, 10 routes (10 active, 0 holddown, 0 hidden)
                 Next-hop reference count: 2
                 Source: 192.0.2.1
                 Next hop type: Router, Next hop index: 584
-               <mark>Next hop: 100.64.0.4 via ge-0/0/2.0, selected
+                Next hop: 100.64.0.4 via ge-0/0/2.0, selected
                 Label-switched-path to-pe1
-                Label operation: Push 299776</mark>
+                Label operation: Push 299776
                 Label TTL action: prop-ttl
                 Load balance label: Label 299776: None;
                 Label element ptr: 0xd7cc238

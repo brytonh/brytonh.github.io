@@ -388,7 +388,7 @@ test.inet.0: 2 destinations, 2 routes (1 active, 0 holddown, 1 hidden)
 66.66.66.66/32 (1 entry, 0 announced)
          BGP    Preference: 170/-101
                 Route Distinguisher: 192.168.1.6:8
-               <mark> Next hop type: Unusable, Next hop index: 0</mark>
+               Next hop type: Unusable, Next hop index: 0
                 Address: 0xc3872d0
                 Next-hop reference count: 3
                 State: <Secondary Hidden Ext Changed ProtectionCand>
@@ -429,7 +429,7 @@ test.inet.0: 2 destinations, 2 routes (2 active, 0 holddown, 0 hidden)
                 Next hop type: Router, Next hop index: 611
                 Next hop: 100.64.1.1 via ge-0/0/0.0, selected
                 Label-switched-path to-r3
-             <mark>   Label operation: Push 16, Push 299856, Push 299776, Push 299824(top) </mark>
+                Label operation: Push 16, Push 299856, Push 299776, Push 299824(top)
 ```
 
 Beautiful! The route is there. 
