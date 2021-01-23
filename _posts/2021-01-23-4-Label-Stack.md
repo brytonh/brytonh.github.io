@@ -407,7 +407,7 @@ test.inet.0: 2 destinations, 2 routes (1 active, 0 holddown, 1 hidden)
 
 Hmm, there's that super informative next-hop unusable error. Maybe this is somehow related to the greater-than-3-label feat we have accomplished? 
 
-If you check out this [link](https://www.juniper.net/documentation/en_US/junos/topics/reference/configuration-statement/maximum-labels-edit-interfaces-unit-family-mpls.html) you will blatantly see that the default stack depth is 3. Let's change this to 4 and see if we this resolves. 
+If you check out this <a href="https://www.juniper.net/documentation/en_US/junos/topics/reference/configuration-statement/maximum-labels-edit-interfaces-unit-family-mpls.html" target="_blank">link</a> you will blatantly see that the default stack depth is 3. Let's change this to 4 and see if we this resolves. 
 
 ```
 root@PE1# show | compare
