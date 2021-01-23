@@ -3,7 +3,9 @@ layout: post
 title: 4 Label Stack in JunOS
 --- 
 
-We are going to go full nerd with this one and exceed the "normal" 3 label stack we might have been used to with something like seamless MPLS. Today, we are shooting for VPN,BGP-LU,LDP,RSVP. We are doing L3VPN Interprovider Option C, with LDP Tunneling over RSVP (LDPoRSVP).
+<span style="color:red"> Disclaimer - This 4 label stack has nothing to do with SR-MPLS or RSVP Pop&Forward</span>
+
+We are going to go full nerd with this one and exceed the "normal" 3 label stack we might have been used to with something like seamless MPLS. Today, we are shooting for VPN,BGP-LU,LDP,RSVP stack bottom to top. We are doing L3VPN Interprovider Option C, with LDP Tunneling over RSVP (LDPoRSVP).
 
 What's the point? Just to see how JunOS reacts to the label stack size larger than 3 by default for vMX routers. Also - for a core leveraging LDPoRSVP or doing some flavor of seamless MPLS and adding on some interprovider VPN this is a completely realistic scenario. 
 
@@ -295,9 +297,9 @@ traceroute to 192.168.1.6 (192.168.1.6) from 192.168.1.1, 30 hops max, 52 byte p
 
  ---
 
- As you saw in that last traceroute from PE1->PE6, that was already a 3-label-push operation. The bottom label was the BGP-LU label, the middle was the LDP label for the P4 router, and the RSVP label was the top label that gives us LSP reachability to P4. So what's more label? No problem, we are almost there. 
+ As you saw in that last traceroute from PE1->PE6, that was already a 3-label-push operation. The bottom label was the BGP-LU label, the middle was the LDP label for the P4 router, and the RSVP label was the top label that gives us LSP reachability to P4. So what's one more label? No problem, we are almost there. 
 
- For simplicy, I'm using a couple direct subnets and vrf-table-label for the L3VPN. We've done enough configuration, it's time to be a little lazy to hurry and see this 4 label stack at work.
+ For simplicity, I'm using a couple direct subnets and vrf-table-label for the L3VPN. We've done enough configuration, it's time to be a little lazy to hurry and see this 4 label stack at work.
 
 PE1:
  ```
@@ -407,7 +409,7 @@ test.inet.0: 2 destinations, 2 routes (1 active, 0 holddown, 1 hidden)
 
 Hmm, there's that super informative next-hop unusable error. Maybe this is somehow related to the greater-than-3-label feat we have accomplished? 
 
-If you check out this <a href="https://www.juniper.net/documentation/en_US/junos/topics/reference/configuration-statement/maximum-labels-edit-interfaces-unit-family-mpls.html" target="_blank">link</a> you will blatantly see that the default stack depth is 3. Let's change this to 4 and see if we this resolves. 
+If you check out this <a href="https://www.juniper.net/documentation/en_US/junos/topics/reference/configuration-statement/maximum-labels-edit-interfaces-unit-family-mpls.html" target="_blank">link</a> you will blatantly see that the default stack depth is 3. Let's change this to 4 and see if we get this resolved. 
 
 ```
 root@PE1# show | compare
