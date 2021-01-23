@@ -5,7 +5,7 @@ title: 4 Label Stack in JunOS
 
 We are going to go full nerd with this one and exceed the "normal" 3 label stack we might have been used to with something like seamless MPLS. Today, we are shooting for VPN,BGP-LU,LDP,RSVP. We are doing L3VPN Interprovider Option C, with LDP Tunneling over RSVP (LDPoRSVP).
 
-What's the point? Just to see how JunOS reacts to the label stack size larger than 3 by default for vMX and vSRX routers. Also - for a core leveraging LDPoRSVP or doing some flavor of seamless MPLS and adding on some interprovider VPN this is a completely realistic scenario. 
+What's the point? Just to see how JunOS reacts to the label stack size larger than 3 by default for vMX routers. Also - for a core leveraging LDPoRSVP or doing some flavor of seamless MPLS and adding on some interprovider VPN this is a completely realistic scenario. 
 
 ---
 
