@@ -141,7 +141,7 @@ On PE6:
 +   }
 ```
 
-Why did I choose "rib inet.3" under family inet labeled-unicast? Chris covers this really well in [this post about BGP-LU](https://www.networkfuntimes.com/bgp-labeled-unicast-on-juniper-routers-for-jncie-sp-students/). By keeping the BGP families inet unicast and inet labeled-unicast separate, we can learn and advertise prefixes from/to both tables without issue. Because of the likelihood of this happening in the real world, I've chosen to keep labeled advertisements in inet.3 RIB. 
+Why did I choose "rib inet.3" under family inet labeled-unicast? Chris covers this really well in <a href="https://www.networkfuntimes.com/bgp-labeled-unicast-on-juniper-routers-for-jncie-sp-students/" target="_blank"> this post about BGP-LU</a>. By keeping the BGP families inet unicast and inet labeled-unicast separate, we can learn and advertise prefixes from/to both tables without issue. Because of the likelihood of this happening in the real world, I've chosen to keep labeled advertisements in inet.3 RIB. 
 
 My iBGP sessions are established, but I need to get the PE1 loopback into inet.3 so I can actually advertise it. Because remember, that's the RIB I'm using on every router for push/pull of labeled-unicast prefixes. I'm going to use a rib-group and interface-routes to do this. 
 
