@@ -386,7 +386,8 @@ There it is, the iBGP-LU route that'll get us to Access-1 from Access-2. The top
 
 Now that we have this LSP end to end between Access nodes, let's put a service onto it to at least prove that it works by configuring a simple pseudowire via t-LDP. 
 
-![](/images/l2circuit.png)
+<a href="/images/l2circuit.png" target="_blank"> <img src="/images/l2circuit.png"/></a>
+
 
 ```
 root@Access-1# show protocols l2circuit
@@ -471,7 +472,7 @@ VPCS> ping 10.0.0.2
 ```
 
 ## Wireshark Image 
-![](/images/l2circuit-wireshark.png)
+<a href="/images/l2circuit-wireshark.png" target="_blank"> <img src="/images/l2circuit-wireshark.png"/></a>
 
 299840 is the bottom L2circuit label - terminates on Access-2 
 299872 is the middle iBGP-LU label - swapped at Border-1
