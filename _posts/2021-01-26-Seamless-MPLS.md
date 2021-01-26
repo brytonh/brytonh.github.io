@@ -8,6 +8,7 @@ Seamless MPLS is directly derived from Interprovider VPN Option C, as BGP Labele
 ### Some remarks before we get started..
 * I'm in no way saying Seamless MPLS is the "way to go" or popular, in fact maybe the opposite <a href="https://blog.ipspace.net/2020/08/worth-reading-seamless-suffering.html" target="_blank">*cough* </a>
 * Label stacking for MPLS transport paths isn't new, reference LDP over RSVP
+* For the topologies you'll definitely want to click them to make them bigger in a new tab
 
 ---
 
