@@ -488,8 +488,11 @@ We didn't really end up using the BNG nodes, the lab got a bit long. But I imagi
 
 ## References 
 <a href="https://www.juniper.net/assets/us/en/local/pdf/whitepapers/2000452-en.pdf" target="_blank">Juniper End-to-End MPLS Whitepaper</a>
+
 <a href="https://www.juniper.net/documentation/en_US/release-independent/nce/topics/concept/nce-141-solution-overview.html" target="_blank">Juniper config example, Seamless MPLS</a>
+
 <a href="https://www.sanog.org/resources/sanog21/SANOG21_Seamless%20MPLS_%20focus%20on%20flexible%20service%20delivery.pdf" target="_blank">SANOG Seamless MPLS deck</a>
+
 <a href="http://ibest.ee/documentation/Juniper/T%20Series/Network%20Scaling%20with%20BGP%20Labeled%20Unicast.pdf" target="_blank">Network Scaling with BGP Labeled-Unicast</a>
 
 
