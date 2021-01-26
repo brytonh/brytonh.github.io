@@ -1,0 +1,1032 @@
+root@Access-1# show | no-more
+## Last changed: 2021-01-26 16:13:09 UTC
+version 20191112.100140_builder.r1067283;
+system {
+    host-name Access-1;
+    root-authentication {
+        encrypted-password "$6$FNzXwScn$LaSCaWw2nBuZKHMO1xLj87Rr/hkfHTZ/06fsLymMde0CWXNRwNyugRAq4Q8df0O8AwQh7K5aaeA18qfOi1tp3/"; ## SECRET-DATA
+    }
+    syslog {
+        user * {
+            any emergency;
+        }
+        file messages {
+            any notice;
+            authorization info;
+        }
+        file interactive-commands {
+            interactive-commands any;
+        }
+    }
+    processes {
+        dhcp-service {
+            traceoptions {
+                file dhcp_logfile size 10m;
+                level all;
+                flag packet;
+            }
+        }
+    }
+}
+interfaces {
+    ge-0/0/0 {
+        encapsulation ethernet-ccc;
+        unit 0;
+    }
+    ge-0/0/2 {
+        unit 0 {
+            family inet {
+                address 100.64.0.0/31;
+            }
+            family iso;
+            family mpls;
+        }
+    }
+    fxp0 {
+        unit 0 {
+            family inet {
+                dhcp {
+                    vendor-id Juniper-vmx-VM600F822FDD;
+                }
+            }
+        }
+    }
+    lo0 {
+        unit 0 {
+            family inet {
+                address 1.1.1.1/32;
+            }
+            family iso {
+                address 49.0002.0010.0100.1001.00;
+            }
+        }
+    }
+}
+policy-options {
+    policy-statement int-only {
+        from interface lo0.0;
+        then accept;
+    }
+}
+routing-options {
+    interface-routes {
+        rib-group inet interfaces;
+    }
+    autonomous-system 64510;
+    rib-groups {
+        interfaces {
+            import-rib [ inet.0 inet.3 ];
+            import-policy int-only;
+        }
+    }
+}
+protocols {
+    isis {
+        level 2 disable;
+        interface ge-0/0/2.0 {
+            point-to-point;
+            level 2 disable;
+        }
+        interface lo0.0 {
+            passive;
+        }
+    }
+    l2circuit {
+        neighbor 9.9.9.9 {
+            interface ge-0/0/0.0 {
+                virtual-circuit-id 123;
+            }
+        }
+    }
+    bgp {
+        group ibgp {
+            type internal;
+            local-address 1.1.1.1;
+            family inet {
+                labeled-unicast {
+                    rib {
+                        inet.3;
+                    }
+                }
+            }
+            export int-only;
+            neighbor 2.2.2.2;
+            neighbor 3.3.3.3;
+        }
+    }
+    ldp {
+        interface all;
+        interface lo0.0;
+    }
+    mpls {
+        interface all;
+    }
+}
+
+
+root@BNG-2.2.2.2# show | no-more
+## Last changed: 2021-01-26 05:16:39 UTC
+version 20191112.100140_builder.r1067283;
+system {
+    host-name BNG-2.2.2.2;
+    root-authentication {
+        encrypted-password "$6$s3RXjv/U$Q7CSKnPhXPQWFRQpCF1t8vz9.Tzx3evDGkXqoNGqUc1mEjPBLlH0PBgLChGkBIigxCVYt0sAmYcpYNaPUN3I41"; ## SECRET-DATA
+    }
+    syslog {
+        user * {
+            any emergency;
+        }
+        file messages {
+            any notice;
+            authorization info;
+        }
+        file interactive-commands {
+            interactive-commands any;
+        }
+    }
+    processes {
+        dhcp-service {
+            traceoptions {
+                file dhcp_logfile size 10m;
+                level all;
+                flag packet;
+            }
+        }
+    }
+}
+interfaces {
+    ge-0/0/0 {
+        unit 0 {
+            family inet {
+                address 100.64.0.2/31;
+            }
+            family iso;
+            family mpls;
+        }
+    }
+    ge-0/0/2 {
+        unit 0 {
+            family inet {
+                address 100.64.0.1/31;
+            }
+            family iso;
+            family mpls;
+        }
+    }
+    fxp0 {
+        unit 0 {
+            family inet {
+                dhcp {
+                    vendor-id Juniper-vmx-VM600F7E6B8B;
+                }
+            }
+        }
+    }
+    lo0 {
+        unit 0 {
+            family inet {
+                address 2.2.2.2/32;
+            }
+            family iso {
+                address 49.0002.0020.0200.2002.00;
+            }
+        }
+    }
+}
+routing-options {
+    autonomous-system 64510;
+}
+protocols {
+    isis {
+        level 2 disable;
+        interface ge-0/0/0.0 {
+            point-to-point;
+        }
+        interface ge-0/0/2.0 {
+            point-to-point;
+        }
+        interface lo0.0 {
+            passive;
+        }
+    }
+    rsvp {
+        interface all;
+    }
+    bgp {
+        group ibgp {
+            type internal;
+            local-address 2.2.2.2;
+            family inet {
+                labeled-unicast {
+                    rib {
+                        inet.3;
+                    }
+                }
+            }
+            neighbor 3.3.3.3;
+            neighbor 1.1.1.1;
+        }
+    }
+    ldp {
+        interface all;
+    }
+    mpls {
+        interface all;
+    }
+}
+
+
+root@Border-1# show | no-more
+## Last changed: 2021-01-26 15:52:35 UTC
+version 20191112.100140_builder.r1067283;
+system {
+    host-name Border-1;
+    root-authentication {
+        encrypted-password "$6$wYcW2MfX$liYZB6zvrrDFlJhX0WWGCXsTH91c9Vvk1ZAZZ4ViaFsG4dJ2E.dC8ySqNuc04XMvHTNcZFvcnyamK9PXCTUr6/"; ## SECRET-DATA
+    }
+    syslog {
+        user * {
+            any emergency;
+        }
+        file messages {
+            any notice;
+            authorization info;
+        }
+        file interactive-commands {
+            interactive-commands any;
+        }
+    }
+    processes {
+        dhcp-service {
+            traceoptions {
+                file dhcp_logfile size 10m;
+                level all;
+                flag packet;
+            }
+        }
+    }
+}
+interfaces {
+    ge-0/0/0 {
+        unit 0 {
+            family inet {
+                address 100.64.0.3/31;
+            }
+            family iso;
+            family mpls;
+        }
+    }
+    ge-0/0/1 {
+        unit 0 {
+            family inet {
+                address 100.64.0.4/31;
+            }
+            family iso;
+            family mpls;
+        }
+    }
+    fxp0 {
+        unit 0 {
+            family inet {
+                dhcp {
+                    vendor-id Juniper-vmx-VM600F7E6A6C;
+                }
+            }
+        }
+    }
+    lo0 {
+        unit 0 {
+            family inet {
+                address 3.3.3.3/32;
+            }
+            family iso {
+                address 49.0002.0030.0300.3003.00;
+            }
+        }
+    }
+}
+policy-options {
+    policy-statement nhs {
+        then {
+            next-hop self;
+        }
+    }
+}
+routing-options {
+    autonomous-system 64510;
+}
+protocols {
+    isis {
+        interface ge-0/0/0.0 {
+            point-to-point;
+            level 2 disable;
+        }
+        interface ge-0/0/1.0 {
+            point-to-point;
+            level 1 disable;
+        }
+        interface lo0.0 {
+            passive;
+        }
+    }
+    rsvp {
+        interface all;
+    }
+    bgp {
+        group ibgp-west {
+            type internal;
+            local-address 3.3.3.3;
+            family inet {
+                labeled-unicast {
+                    rib {
+                        inet.3;
+                    }
+                }
+            }
+            export nhs;
+            cluster 3.3.3.3;
+            neighbor 2.2.2.2;
+            neighbor 1.1.1.1;
+        }
+        group ibgp-core {
+            type internal;
+            local-address 3.3.3.3;
+            family inet {
+                labeled-unicast {
+                    rib {
+                        inet.3;
+                    }
+                }
+            }
+            export nhs;
+            neighbor 7.7.7.7;
+        }
+    }
+    ldp {
+        interface all;
+    }
+    mpls {
+        label-switched-path to-border2 {
+            to 7.7.7.7;
+        }
+        interface all;
+    }
+}
+
+root@Core-1# show | no-more
+## Last changed: 2021-01-26 15:26:30 UTC
+version 20191112.100140_builder.r1067283;
+system {
+    host-name Core-1;
+    root-authentication {
+        encrypted-password "$6$35A7sla7$ATnG/59fivXpmq3m3rD5vY.PwzujN7Ns/soKWxm8UrJk8LvLorkvHgeQ7K4GpIw9/ja1hyrGemqQ4VTJUeRy7/"; ## SECRET-DATA
+    }
+    syslog {
+        user * {
+            any emergency;
+        }
+        file messages {
+            any notice;
+            authorization info;
+        }
+        file interactive-commands {
+            interactive-commands any;
+        }
+    }
+    processes {
+        dhcp-service {
+            traceoptions {
+                file dhcp_logfile size 10m;
+                level all;
+                flag packet;
+            }
+        }
+    }
+}
+interfaces {
+    ge-0/0/1 {
+        unit 0 {
+            family inet {
+                address 100.64.0.5/31;
+            }
+            family iso;
+            family mpls;
+        }
+    }
+    ge-0/0/2 {
+        unit 0 {
+            family inet {
+                address 100.64.0.6/31;
+            }
+            family iso;
+            family mpls;
+        }
+    }
+    fxp0 {
+        unit 0 {
+            family inet {
+                dhcp {
+                    vendor-id Juniper-vmx-VM600F7E7F1E;
+                }
+            }
+        }
+    }
+    lo0 {
+        unit 0 {
+            family inet {
+                address 4.4.4.4/32;
+            }
+            family iso {
+                address 49.0001.0040.0400.4004.00;
+            }
+        }
+    }
+}
+routing-options {
+    autonomous-system 64510;
+}
+protocols {
+    isis {
+        level 1 disable;
+        interface all {
+            point-to-point;
+        }
+        interface lo0.0 {
+            passive;
+        }
+    }
+    rsvp {
+        interface all;
+    }
+    bgp {
+        group ibgp-core {
+            type internal;
+            local-address 4.4.4.4;
+            family inet {
+                labeled-unicast {
+                    rib {
+                        inet.3;
+                    }
+                }
+            }
+            neighbor 3.3.3.3;
+            neighbor 7.7.7.7;
+        }
+    }
+    mpls {
+        label-switched-path to-core3 {
+            to 6.6.6.6;
+        }
+        interface all;
+    }
+}
+
+
+root@Core-2# show | no-more
+## Last changed: 2021-01-26 15:26:52 UTC
+version 20191112.100140_builder.r1067283;
+system {
+    host-name Core-2;
+    root-authentication {
+        encrypted-password "$6$SxgKtkCl$jY//OBvF5QLA1HC8iy9h.IbWu/73KhZSVZG9IPi/TCcGwkUpNtbMyJJdUnGoWOuFPGWvputnJShoV90Ka6KRH0"; ## SECRET-DATA
+    }
+    syslog {
+        user * {
+            any emergency;
+        }
+        file messages {
+            any notice;
+            authorization info;
+        }
+        file interactive-commands {
+            interactive-commands any;
+        }
+    }
+    processes {
+        dhcp-service {
+            traceoptions {
+                file dhcp_logfile size 10m;
+                level all;
+                flag packet;
+            }
+        }
+    }
+}
+interfaces {
+    ge-0/0/2 {
+        unit 0 {
+            family inet {
+                address 100.64.0.7/31;
+            }
+            family iso;
+            family mpls;
+        }
+    }
+    ge-0/0/3 {
+        unit 0 {
+            family inet {
+                address 100.64.0.8/31;
+            }
+            family iso;
+            family mpls;
+        }
+    }
+    fxp0 {
+        unit 0 {
+            family inet {
+                dhcp {
+                    vendor-id Juniper-vmx-VM600F7E7160;
+                }
+            }
+        }
+    }
+    lo0 {
+        unit 0 {
+            family inet {
+                address 5.5.5.5/32;
+            }
+            family iso {
+                address 49.0001.0050.0500.5000;
+                address 49.0001.0050.0500.5005.00;
+            }
+        }
+    }
+}
+protocols {
+    isis {
+        level 1 disable;
+        interface all {
+            point-to-point;
+        }
+        interface lo0.0 {
+            passive;
+        }
+    }
+    rsvp {
+        interface all;
+    }
+    mpls {
+        interface all;
+    }
+}
+
+
+root@Core-3# show | no-more
+## Last changed: 2021-01-26 15:27:31 UTC
+version 20191112.100140_builder.r1067283;
+system {
+    host-name Core-3;
+    root-authentication {
+        encrypted-password "$6$X9yfqQBB$bjecEUO1431er3qofZySf.ZO1EkST9q/PqP36oO9WGOdISlLoaQtN0jFQSpDV.PwOmZr4d7nKbZuj7fVJYGGA0"; ## SECRET-DATA
+    }
+    syslog {
+        user * {
+            any emergency;
+        }
+        file messages {
+            any notice;
+            authorization info;
+        }
+        file interactive-commands {
+            interactive-commands any;
+        }
+    }
+    processes {
+        dhcp-service {
+            traceoptions {
+                file dhcp_logfile size 10m;
+                level all;
+                flag packet;
+            }
+        }
+    }
+}
+interfaces {
+    ge-0/0/1 {
+        unit 0 {
+            family inet {
+                address 100.64.0.10/31;
+            }
+            family iso;
+            family mpls;
+        }
+    }
+    ge-0/0/3 {
+        unit 0 {
+            family inet {
+                address 100.64.0.9/31;
+            }
+            family iso;
+            family mpls;
+        }
+    }
+    fxp0 {
+        unit 0 {
+            family inet {
+                dhcp {
+                    vendor-id Juniper-vmx-VM600F7E7CD2;
+                }
+            }
+        }
+    }
+    lo0 {
+        unit 0 {
+            family inet {
+                address 6.6.6.6/32;
+            }
+            family iso {
+                address 49.0001.0060.0600.6006.00;
+            }
+        }
+    }
+}
+routing-options {
+    autonomous-system 64510;
+}
+protocols {
+    isis {
+        level 1 disable;
+        interface all {
+            point-to-point;
+        }
+        interface lo0.0 {
+            passive;
+        }
+    }
+    rsvp {
+        interface all;
+    }
+    bgp {
+        group ibgp-core {
+            type internal;
+            local-address 6.6.6.6;
+            family inet {
+                labeled-unicast {
+                    rib {
+                        inet.3;
+                    }
+                }
+            }
+            neighbor 3.3.3.3;
+            neighbor 7.7.7.7;
+        }
+    }
+    mpls {
+        label-switched-path to-core1 {
+            to 4.4.4.4;
+        }
+        interface all;
+    }
+}
+
+root@Border-2# show | no-more
+## Last changed: 2021-01-26 15:57:13 UTC
+version 20191112.100140_builder.r1067283;
+system {
+    host-name Border-2;
+    root-authentication {
+        encrypted-password "$6$tTiYA2Z7$sQfsIPKXyTTVD/1WlTsaSgUrtwT8yKBVKst3PRPaktiXnbP86ypI14KuvUwNRm/fYQ73YNz5kjFGxSBBkzU.q."; ## SECRET-DATA
+    }
+    syslog {
+        user * {
+            any emergency;
+        }
+        file messages {
+            any notice;
+            authorization info;
+        }
+        file interactive-commands {
+            interactive-commands any;
+        }
+    }
+    processes {
+        dhcp-service {
+            traceoptions {
+                file dhcp_logfile size 10m;
+                level all;
+                flag packet;
+            }
+        }
+    }
+}
+interfaces {
+    ge-0/0/0 {
+        unit 0 {
+            family inet {
+                address 100.64.0.12/31;
+            }
+            family iso;
+            family mpls;
+        }
+    }
+    ge-0/0/1 {
+        unit 0 {
+            family inet {
+                address 100.64.0.11/31;
+            }
+            family iso;
+            family mpls;
+        }
+    }
+    fxp0 {
+        unit 0 {
+            family inet {
+                dhcp {
+                    vendor-id Juniper-vmx-VM600F7E6D99;
+                }
+            }
+        }
+    }
+    lo0 {
+        unit 0 {
+            family inet {
+                address 7.7.7.7/32;
+            }
+            family iso {
+                address 49.0003.0070.0700.7007.00;
+            }
+        }
+    }
+}
+policy-options {
+    policy-statement nhs {
+        then {
+            next-hop self;
+        }
+    }
+}
+routing-options {
+    autonomous-system 64510;
+}
+protocols {
+    isis {
+        interface ge-0/0/0.0 {
+            point-to-point;
+            level 2 disable;
+        }
+        interface ge-0/0/1.0 {
+            point-to-point;
+            level 1 disable;
+        }
+        interface lo0.0 {
+            passive;
+        }
+    }
+    rsvp {
+        interface all;
+    }
+    bgp {
+        group ibgp-east {
+            type internal;
+            local-address 7.7.7.7;
+            family inet {
+                labeled-unicast {
+                    rib {
+                        inet.3;
+                    }
+                }
+            }
+            export nhs;
+            cluster 7.7.7.7;
+            neighbor 8.8.8.8;
+            neighbor 9.9.9.9;
+        }
+        group ibgp-core {
+            type internal;
+            local-address 7.7.7.7;
+            family inet {
+                labeled-unicast {
+                    rib {
+                        inet.3;
+                    }
+                }
+            }
+            export nhs;
+            neighbor 3.3.3.3;
+        }
+    }
+    ldp {
+        interface all;
+    }
+    mpls {
+        label-switched-path to-border1 {
+            to 3.3.3.3;
+        }
+        interface all;
+    }
+}
+
+
+root@BNG-8.8.8.8# show | no-more
+## Last changed: 2021-01-26 15:20:36 UTC
+version 20191112.100140_builder.r1067283;
+system {
+    host-name BNG-8.8.8.8;
+    root-authentication {
+        encrypted-password "$6$5x7u7jLl$Rg77Pl7dSrmIkVzh4NpG3CJ3p/Vd..yiqlj3vcWHDHJ/wIDGCzP0EfvLv4KBZM0.kWkodgBXB8TN72jLrg205."; ## SECRET-DATA
+    }
+    syslog {
+        user * {
+            any emergency;
+        }
+        file messages {
+            any notice;
+            authorization info;
+        }
+    }
+}
+interfaces {
+    ge-0/0/0 {
+        unit 0 {
+            family inet {
+                address 100.64.0.13/31;
+            }
+            family iso;
+            family mpls;
+        }
+    }
+    ge-0/0/2 {
+        unit 0 {
+            family inet {
+                address 100.64.0.14/31;
+            }
+            family iso;
+            family mpls;
+        }
+    }
+    lo0 {
+        unit 0 {
+            family inet {
+                address 8.8.8.8/32;
+            }
+            family iso {
+                address 49.0003.0080.0800.8008.00;
+            }
+        }
+    }
+}
+routing-options {
+    autonomous-system 64510;
+}
+protocols {
+    isis {
+        level 2 disable;
+        interface ge-0/0/0.0 {
+            point-to-point;
+        }
+        interface all {
+            point-to-point;
+        }
+        interface lo0.0 {
+            passive;
+        }
+    }
+    rsvp {
+        interface all;
+    }
+    bgp {
+        group ibgp {
+            type internal;
+            local-address 8.8.8.8;
+            family inet {
+                labeled-unicast {
+                    rib {
+                        inet.3;
+                    }
+                }
+            }
+            neighbor 7.7.7.7;
+            neighbor 9.9.9.9;
+        }
+    }
+    ldp {
+        interface all;
+    }
+    mpls {
+        interface all;
+    }
+}
+
+root@Access-2# show | no-more
+## Last changed: 2021-01-26 16:12:58 UTC
+version 20191112.100140_builder.r1067283;
+system {
+    host-name Access-2;
+    root-authentication {
+        encrypted-password "$6$oNQzT2Za$T76qxxtEJHLg1c31Mold82ya2OOJG7.AlSUJ/074edXUFThkRj2OWPxA4w7KksSEOWdwQ1rCpGOwe0ELKoXyE0"; ## SECRET-DATA
+    }
+    syslog {
+        user * {
+            any emergency;
+        }
+        file messages {
+            any notice;
+            authorization info;
+        }
+        file interactive-commands {
+            interactive-commands any;
+        }
+    }
+    processes {
+        dhcp-service {
+            traceoptions {
+                file dhcp_logfile size 10m;
+                level all;
+                flag packet;
+            }
+        }
+    }
+}
+interfaces {
+    ge-0/0/0 {
+        encapsulation ethernet-ccc;
+        unit 0;
+    }
+    ge-0/0/2 {
+        unit 0 {
+            family inet {
+                address 100.64.0.15/31;
+            }
+            family iso;
+            family mpls;
+        }
+    }
+    fxp0 {
+        unit 0 {
+            family inet {
+                dhcp {
+                    vendor-id Juniper-vmx-VM600F819ED1;
+                }
+            }
+        }
+    }
+    lo0 {
+        unit 0 {
+            family inet {
+                address 9.9.9.9/32;
+            }
+            family iso {
+                address 49.0003.0090.0900.9009.00;
+            }
+        }
+    }
+}
+policy-options {
+    policy-statement int-only {
+        from interface lo0.0;
+        then accept;
+    }
+}
+routing-options {
+    interface-routes {
+        rib-group inet interfaces;
+    }
+    autonomous-system 64510;
+    rib-groups {
+        interfaces {
+            import-rib [ inet.0 inet.3 ];
+            import-policy int-only;
+        }
+    }
+}
+protocols {
+    isis {
+        level 2 disable;
+        interface all {
+            point-to-point;
+        }
+    }
+    rsvp {
+        interface all;
+    }
+    l2circuit {
+        neighbor 1.1.1.1 {
+            interface ge-0/0/0.0 {
+                virtual-circuit-id 123;
+            }
+        }
+    }
+    bgp {
+        group ibgp {
+            type internal;
+            local-address 9.9.9.9;
+            family inet {
+                labeled-unicast {
+                    rib {
+                        inet.3;
+                    }
+                }
+            }
+            export int-only;
+            neighbor 7.7.7.7;
+            neighbor 8.8.8.8;
+        }
+    }
+    ldp {
+        interface all;
+        interface lo0.0;
+    }
+    mpls {
+        interface all;
+    }
+}
