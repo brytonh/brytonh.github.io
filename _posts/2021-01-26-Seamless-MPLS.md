@@ -3,10 +3,10 @@ layout: post
 title: Seamless MPLS
 --- 
 
-Seamless MPLS is directly derived from Interprovider VPN Option C, as BGP Labeled Unicast is used between administrative domains. In Interprovider VPN Option C, eBGP-LU is used to extend LSPs between two Autonomous Systems at the AS border. In Seamless MPLS, BGP-LU is used to extend the MPLS network and LSPs beyond regional administrative boundaries. The boundary can be an Autonomous System border like with Interprovider VPN Option C mentioned, but it could also be an IGP area or sub-AS. I'd like to focus on a topology with an ISP that has geographically separate regions, and the need for MPLS LSPs end-to-end. The ISP is using IS-IS throughout their whole network, but their regions are Level 1 domains and the core is their Level 2 backbone.  
+Seamless MPLS is derived from Interprovider VPN Option C, as BGP Labeled Unicast is used between administrative domains. In Interprovider VPN Option C, eBGP-LU is used to extend LSPs between two Autonomous Systems at the AS border. In Seamless MPLS, BGP-LU is used to extend the MPLS network and LSPs beyond regional administrative boundaries. The boundary can be an Autonomous System border like with Interprovider VPN Option C mentioned, but it could also be an IGP area or sub-AS. I'd like to focus on a topology with an ISP that has geographically separate regions, and the need for MPLS LSPs end-to-end. The ISP is using IS-IS throughout their whole network, but their regions are Level 1 domains and the core is their Level 2 backbone.  
 
 ### Some remarks before we get started..
-* I'm in no way saying Seamless MPLS is the "way to go" or popular, in fact maybe the opposite <a href="https://blog.ipspace.net/2020/08/worth-reading-seamless-suffering.html" target="_blank">*cough* </a>
+* I'm in no way saying Seamless MPLS is the "way to go" or popular, in fact maybe the opposite... <a href="https://blog.ipspace.net/2020/08/worth-reading-seamless-suffering.html" target="_blank">*cough* </a>
 * Label stacking for MPLS transport paths isn't new, reference LDP over RSVP
 * For the topologies you'll definitely want to click them to make them bigger in a new tab
 
@@ -24,7 +24,7 @@ Seamless MPLS is directly derived from Interprovider VPN Option C, as BGP Labele
 ## Starting point
 * IS-IS is configured according to the topology, Level 2 in the core 49.0001 and Level 1 in the regional areas. 
 * All of the intra-area LDP LSPs in the regions are configured 
-* The intra-area bidirectional LSPs are configured from Core-1 to Core-3
+* Bidirectional LSPs are configured over the core from Border-1 to Border-2
 * All necessary address families for interfaces are configured already (MPLS, ISO, INET)
 
 ---
@@ -475,9 +475,9 @@ VPCS> ping 10.0.0.2
 ## Wireshark Image 
 <a href="/images/l2circuit-wireshark.png" target="_blank"> <img src="/images/l2circuit-wireshark.png"/></a>
 
-299840 is the bottom L2circuit label - terminates on Access-2 
-299872 is the middle iBGP-LU label - swapped at Border-1
-299792 is the topmost LDP label - egress of LSP is Border-1 
+* 299840 is the bottom L2circuit label - terminates on Access-2 
+* 299872 is the middle iBGP-LU label - swapped at Border-1
+* 299792 is the topmost LDP label - egress of LSP is Border-1 
 
 We didn't really end up using the BNG nodes, the lab got a bit long. But I imagine you can get the picture of terminating L3 services via pseudowire or L2 to a BNG.
 
