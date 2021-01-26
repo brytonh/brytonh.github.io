@@ -28,7 +28,7 @@ Seamless MPLS is directly derived from Interprovider VPN Option C, as BGP Labele
 
 ---
 
-##iBGP-LU Configuration
+## iBGP-LU Configuration
 So, instead of having to signal an LDP LSP (with L2->L1 leaking or longest-match configured) or running RSVP with some inter-domain extension (expand loose hop) or bypassing TED, we can extend LSPs using BGP-LU. When you use eBGP-LU, this is pretty straight forward as with Option C. eBGP-LU sets the next-hop self toward the eBGP-LU peer, and now the eBGP peers are label pitstops on a packet's journey from source to destination. 
 
 However, we aren't using eBGP-LU. We don't have separate AS's in our topology. How do we make iBGP-LU behave similarly to inter-AS option C? The answer: <span style="color:blue"> Route Reflection</span>
