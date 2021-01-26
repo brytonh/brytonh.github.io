@@ -12,7 +12,7 @@ Seamless MPLS is directly derived from Interprovider VPN Option C, as BGP Labele
 ---
 
 ## Topology: 
-![](/images/SeamlessMPLS.png)
+<a href="/images/SeamlessMPLS.png" target="_blank"> <img src="/images/SeamlessMPLS.png"/></a>
 
 ## Device roles 
 1. Access - Routers used to hand off L3 or L2 services directly to access switches or to customers directly 
