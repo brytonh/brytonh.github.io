@@ -7,7 +7,7 @@ In the thick of studying for JNCIE-DC, I wanted to write a blog post on using L3
 
 ---
 
-## Topology
+## Topology (click picture to open in new tab)
 <a href="/images/EVPN-L3-DCI.png" target="_blank"> <img src="/images/EVPN-L3-DCI.png"/></a>
 
 ### Starting Point 
@@ -19,8 +19,6 @@ We need to configure an MPLS LSP between PE1 and PE5 in AS64510 across our IP/MP
 
 ```
 root@PE1# set protocols mpls lsp to-pe5 to 192.168.1.5
-
-
 
 root@PE5# set protocols mpls lsp to-pe1 to 192.168.1.1
 
