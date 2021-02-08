@@ -283,3 +283,8 @@ In future posts, I hope to get more involved in EVPN as I keep studying for JNCI
 ### Configs 
 All configs are included <a href="/configs/evpn-mpls-vxlan.txt" target="_blank"> here </a>
 
+### References 
+<a href="https://www.juniper.net/documentation/en_US/junos/topics/example/evpn-vxlan-collapsed-topology.html" target="_blank">juniper vxlan collapsed core example</a>
+
+<a href="https://www.juniper.net/documentation/en_US/junos/topics/concept/evpn-route-type5-understanding.html" target="_blank">juniper evpn route types</a>
+
