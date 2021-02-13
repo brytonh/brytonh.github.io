@@ -80,15 +80,15 @@ If you want to watch it in real-time, use "monitor start daemon-info.log"
 ---
 
 ## Man, sure would be nice if there was a protocol that did all this without special on-box work! 
-That protocol is BFD (Bidirectional Forwarding Detection) and it must be a HUGE operational toll for some transit providers to configure it. It's only been around <a href="https://tools.ietf.org/html/rfc5880">for a decade.</a>
+That protocol is BFD (Bidirectional Forwarding Detection) and it must be a HUGE operational toll for some transit providers to configure it. It's only been around <a href="https://tools.ietf.org/html/rfc5880" target="_blank">for a decade.</a>
 
 ### References
 <a href="https://www.juniper.net/documentation/en_US/junos/topics/concept/junos-script-automation-event-notifications-and-policy-overview.html
-">https://www.juniper.net/documentation/en_US/junos/topics/concept/junos-script-automation-event-notifications-and-policy-overview.html</a>
+" target="_blank">https://www.juniper.net/documentation/en_US/junos/topics/concept/junos-script-automation-event-notifications-and-policy-overview.html</a>
 
-<a href="https://kb.juniper.net/InfoCenter/index?page=content&id=KB35533&actp=RSS">https://kb.juniper.net/InfoCenter/index?page=content&id=KB35533&actp=RSS</a>
+<a href="https://kb.juniper.net/InfoCenter/index?page=content&id=KB35533&actp=RSS" target="_blank">https://kb.juniper.net/InfoCenter/index?page=content&id=KB35533&actp=RSS</a>
 
 <a href="https://www.juniper.net/documentation/en_US/junos/topics/topic-map/real-time-performance-monitoring.html#id-understanding-real-time-performance-monitoring-on-switches
-">https://www.juniper.net/documentation/en_US/junos/topics/topic-map/real-time-performance-monitoring.html#id-understanding-real-time-performance-monitoring-on-switches</a>
+" target="_blank">https://www.juniper.net/documentation/en_US/junos/topics/topic-map/real-time-performance-monitoring.html#id-understanding-real-time-performance-monitoring-on-switches</a>
 
-<a href="https://www.juniper.net/documentation/en_US/junos/topics/topic-map/real-time-performance-monitoring.html#jd0e4418">https://www.juniper.net/documentation/en_US/junos/topics/topic-map/real-time-performance-monitoring.html#jd0e4418</a>
+<a href="https://www.juniper.net/documentation/en_US/junos/topics/topic-map/real-time-performance-monitoring.html#jd0e4418" target="_blank">https://www.juniper.net/documentation/en_US/junos/topics/topic-map/real-time-performance-monitoring.html#jd0e4418</a>
