@@ -79,7 +79,7 @@ Feb 12 17:30:30  R1 rmopd[9650]: PING_PROBE_FAILED: pingCtlOwnerIndex = bgp-mon,
 Feb 12 17:30:30  R1 rpd[7597]: bgp_peer_mgmt_clear:8430: NOTIFICATION sent to 192.168.0.0 (External AS 64511): code 6 (Cease) subcode 4 (Administratively Reset), Reason: Management session cleared BGP neighbor
 Feb 12 17:30:40  R1 rmopd[9650]: PING_TEST_COMPLETED: pingCtlOwnerIndex = bgp-mon, pingCtlTestName = icmp-test
 ```
-We see above the ping test fails, and the event policy triggers the event action, bgp session to neighbor 192.168.0.0 is torn down successfully. 
+We see above the ping test fails, and the event policy triggers the event action, bgp session to neighbor 192.168.0.0 is torn down successfully. In my test, ping probes keep failing until the end-target comes back online again, but the bgp session isn't torn down repeatedly after the first time. 
 
 If you want to watch it in real-time, use "monitor start daemon-info.log"
 
