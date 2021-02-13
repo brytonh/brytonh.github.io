@@ -7,7 +7,7 @@ Title isn't 100% accurate, because I'm not making this post of code snippets bec
 
 ---
 
-So here we are, configuring <span style="color:green">RPM and event-options.</span> I'm just going to drop the code snippets and explain it. 
+So here we are, configuring <strong><span style="color:green">RPM and event-options.</span></strong> I'm just going to drop the code snippets and explain it. 
 
 ```
 [edit]
