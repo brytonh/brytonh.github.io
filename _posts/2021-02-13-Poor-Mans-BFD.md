@@ -65,6 +65,10 @@ Our event policy watches for a ping_test_failed event with RPM owner bgp-mon and
 We configured the RPM test and the event policy. Let's see how it works. To simulate an outage, I deactivated the far-end interface of the target (192.168.0.0). Normally, without a link-down event BGP would take up to a full 90s hold-time to tear down the session. With RPM configured, we notice within a 5s interval with our config. Below, with some verbose logging you can see the 5 ping probes fail, so the test fails and our event policy tears down our bgp session as configured. 
 
 ```
+set system syslog file daemon-info.log daemon info" 
+```
+
+```
 root@R1# run show log daemon-info.log 
 Feb 12 17:30:14  R1 rmopd[9650]: PING_PROBE_FAILED: pingCtlOwnerIndex = bgp-mon, pingCtlTestName = icmp-test
 Feb 12 17:30:19  R1 rmopd[9650]: PING_PROBE_FAILED: pingCtlOwnerIndex = bgp-mon, pingCtlTestName = icmp-test
