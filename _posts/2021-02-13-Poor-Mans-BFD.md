@@ -49,10 +49,10 @@ In JunOS, RPM (Real-Time Performance Monitoring) enables you to configure active
 
 We are using a basic RPM config with ICMP echo-request probes, and a successful echo-reply means the probe was successful. If the ping times out, the host target (192.168.0.0) on the other end fails the probe test. 
 
-probe-count 5;           # number of probes we sent in our ping test 
-probe-interval 5;        # number of seconds to wait between each test 
-ttl 1;                   # important, I want the test to only succeed if the router is 1 hop away
-thresholds total-loss 5; # if all 5 pings in the test are failed, fail this rpm test
+* probe-count 5;           # number of probes we sent in our ping test 
+* probe-interval 5;        # number of seconds to wait between each test 
+* ttl 1;                   # important, I want the test to only succeed if the router is 1 hop away
+* thresholds total-loss 5; # if all 5 pings in the test are failed, fail this rpm test
 
 ## Event Options 
 Events in JunOS are received by a process called eventd, and the events can come from other processes such as rpd (routing protocol process) or mgd (management process). Event policies can be configured to use events as triggers, and to perform some sort of action after the trigger. Think of the JunOS eventd service as being fed by other management, routing, and infrastructure processes. Eventd relies on syslog entries or SNMP traps. 
