@@ -89,8 +89,6 @@ Feb 13 20:34:25  R1 mgd[10531]: UI_LOGOUT_EVENT: User 'root' logout
 
 We see above the ping test fails, and the event policy triggers the event action, bgp session to neighbor 192.168.0.0 is torn down successfully. In my test, ping probes keep failing until the end-target comes back online again, but the bgp session isn't torn down repeatedly after the first time. 
 
-If you want to watch it in real-time, use "monitor start daemon-info.log"
-
 ---
 
 ### Man, sure would be nice if there was a protocol that did all this without special on-box work! 
