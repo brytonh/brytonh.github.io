@@ -85,7 +85,10 @@ That protocol is BFD (Bidirectional Forwarding Detection) and it must be a HUGE 
 ### References
 <a href="https://www.juniper.net/documentation/en_US/junos/topics/concept/junos-script-automation-event-notifications-and-policy-overview.html
 ">https://www.juniper.net/documentation/en_US/junos/topics/concept/junos-script-automation-event-notifications-and-policy-overview.html</a>
+
 <a href="https://kb.juniper.net/InfoCenter/index?page=content&id=KB35533&actp=RSS">https://kb.juniper.net/InfoCenter/index?page=content&id=KB35533&actp=RSS</a>
+
 <a href="https://www.juniper.net/documentation/en_US/junos/topics/topic-map/real-time-performance-monitoring.html#id-understanding-real-time-performance-monitoring-on-switches
 ">https://www.juniper.net/documentation/en_US/junos/topics/topic-map/real-time-performance-monitoring.html#id-understanding-real-time-performance-monitoring-on-switches</a>
+
 <a href="https://www.juniper.net/documentation/en_US/junos/topics/topic-map/real-time-performance-monitoring.html#jd0e4418">https://www.juniper.net/documentation/en_US/junos/topics/topic-map/real-time-performance-monitoring.html#jd0e4418</a>
