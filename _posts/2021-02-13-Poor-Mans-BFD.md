@@ -92,7 +92,7 @@ We see above the ping test fails, and the event policy triggers the event action
 ---
 
 ### <span style="color:blue">Man, sure would be nice if there was a protocol that did all this without special on-box work! </span>
-That protocol is BFD (Bidirectional Forwarding Detection) and it must be a <strong>HUGE</strong> operational toll for some transit providers to configure it. It's only been around <a href="https://tools.ietf.org/html/rfc5880" target="_blank">for a decade.</a>
+That protocol is BFD (Bidirectional Forwarding Detection) and it must be a <strong><span style="color:red">HUGE</span></strong> operational toll for some transit providers to configure it. It's only been around <a href="https://tools.ietf.org/html/rfc5880" target="_blank">for a decade.</a>
 
 ### References
 <a href="https://www.juniper.net/documentation/en_US/junos/topics/concept/junos-script-automation-event-notifications-and-policy-overview.html
