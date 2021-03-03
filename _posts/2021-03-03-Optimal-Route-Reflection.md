@@ -415,7 +415,7 @@ Prefix                  L Version   Metric Type
 100.64.0.32/31          2      64       10 int
 ```
 
-However in testing I was not able to get my vMX running 19.3R2.9 to actually advertise the "correct" route to R7, the IGP-preferred route via R8 with AS path AS2 AS3. The following links lead me to believe it could be related to a lack of BGP-ORR support fully on the vMX, check <a href="https://apps.juniper.net/feature-explorer/feature-info.html?fKey=7033&fn=BGP%20Optimal%20Route%20Reflection%20(BGP-ORR)">here</a> and <a href="https://apps.juniper.net/feature-explorer/select-platform.html?category=Routing&typ=1#family=&pid=11320022&platform=vMX&rel=19.3R2&sid=1030&stat=0.7830100733301764&swName=Junos%20OS">here</a>
+However in testing I was not able to get my vMX running 19.3R2.9 to actually advertise the "correct" route to R7, the IGP-preferred route via R8 with AS path AS2 AS3. The following links lead me to believe it could be related to a lack of BGP-ORR support fully on the vMX, check <a href="https://apps.juniper.net/feature-explorer/feature-info.html?fKey=7033&fn=BGP%20Optimal%20Route%20Reflection%20(BGP-ORR)" target="_blank">here</a> and <a href="https://apps.juniper.net/feature-explorer/select-platform.html?category=Routing&typ=1#family=&pid=11320022&platform=vMX&rel=19.3R2&sid=1030&stat=0.7830100733301764&swName=Junos%20OS" target="_blank">here</a>
 
 ---
 
