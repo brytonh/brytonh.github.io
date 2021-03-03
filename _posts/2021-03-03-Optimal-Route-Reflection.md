@@ -416,7 +416,69 @@ Prefix                  L Version   Metric Type
 100.64.0.32/31          2      64       10 int
 ```
 
-However in testing I was not able to get my vMX running 19.3R2.9 to actually advertise the "correct" route to R7, the IGP-preferred route via R8 with AS path AS2 AS3. The following links lead me to believe it could be related to a lack of BGP-ORR support fully on the vMX, check <a href="https://apps.juniper.net/feature-explorer/feature-info.html?fKey=7033&fn=BGP%20Optimal%20Route%20Reflection%20(BGP-ORR)" target="_blank">here</a> and <a href="https://apps.juniper.net/feature-explorer/select-platform.html?category=Routing&typ=1#family=&pid=11320022&platform=vMX&rel=19.3R2&sid=1030&stat=0.7830100733301764&swName=Junos%20OS" target="_blank">here</a>
+RR1 is advertising the optimized route to R7
+```
+root@RR1# run show route advertising-protocol bgp 7.7.7.7 detail
+
+inet.0: 30 destinations, 31 routes (30 active, 0 holddown, 0 hidden)
+  33.33.33.33/32 (2 entries, 2 announced)
+ BGP group ibgp type Internal
+     Nexthop: 8.8.8.8
+     Localpref: 100
+     AS path: [64510] 2 3 I
+     Cluster ID: 11.11.11.11
+     Originator ID: 8.8.8.8
+```
+
+And there is connectivity!
+```
+root@R7> ping 33.33.33.33 source 7.7.7.7
+PING 33.33.33.33 (33.33.33.33): 56 data bytes
+64 bytes from 33.33.33.33: icmp_seq=0 ttl=62 time=9.548 ms
+64 bytes from 33.33.33.33: icmp_seq=1 ttl=62 time=8.514 ms
+^C
+--- 33.33.33.33 ping statistics ---
+2 packets transmitted, 2 packets received, 0% packet loss
+round-trip min/avg/max/stddev = 8.514/9.031/9.548/0.517 ms
+
+root@R7> show route 33.33.33.33 detail
+
+inet.0: 33 destinations, 33 routes (33 active, 0 holddown, 0 hidden)
+33.33.33.33/32 (1 entry, 1 announced)
+        *BGP    Preference: 170/-101
+                Next hop type: Indirect, Next hop index: 0
+                Address: 0xc389788
+                Next-hop reference count: 2
+                Source: 11.11.11.11
+                Next hop type: Router, Next hop index: 602
+                Next hop: 100.64.0.10 via ge-0/0/0.0, selected
+                Label element ptr: 0xd916300
+                Label parent element ptr: 0x0
+                Label element references: 1
+                Label element child references: 0
+                Label element lsp id: 0
+                Session Id: 0x141
+                Protocol next hop: 8.8.8.8
+                Indirect next hop: 0xc2be904 1048576 INH Session ID: 0x16d
+                State: <Active Int Ext>
+                Local AS: 64510 Peer AS: 64510
+                Age: 31:36      Metric2: 10
+                Validation State: unverified
+                Task: BGP_64510.11.11.11.11
+                Announcement bits (2): 0-KRT 5-Resolve tree 4
+                AS path: 2 3 I  (Originator)
+                Cluster list:  11.11.11.11
+                Originator ID: 8.8.8.8
+                Accepted
+                Localpref: 100
+                Router ID: 11.11.11.11
+```
+
+---
+## DISCLAIMER
+I had some significant issues when inet.3 was populated by LDP. The advertisements would not be that of the BGP-ORR calculated route. Instead, the advertisements would be from the RR's point of view again. My thought is that there is no mapping between IS-IS route next hop calculated in BGP-ORR and the active (preferred) LDP next hop route in inet.3. I'd imagine this is something that could easily be fixed in the future, being as BGP-ORR would provide very little value to SP's running L3VPN with a ASN:# naming conventioned for Route Distinguishers without the added inet.3 mapping functionality. 
+
+I started a conversation about this on <a href="https://www.reddit.com/r/Juniper/comments/lwymt8/bgporr_on_vmx/?utm_source=share&utm_medium=web2x&context=3" target="_blank">reddit</a> where a user helped me realize the inet.3 issue that I didn't expect right away. I assumed the IGP-LDP mapping would be there for these BGP-ORR calculations. 
 
 ---
 
