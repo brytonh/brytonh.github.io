@@ -8,7 +8,7 @@ iBGP Route Reflection is an important technique used by many iBGP-enabled networ
 ---
 
 ## Topology 
-![](/images/bgp-orr.png)
+<a href="/images/bgp-orr.png" target="_blank"> <img src="/images/bgp-orr.png"/></a>
 
 The RR only sees it's point of view IGP-wise, not the view of the RR clients, by default. In our example, we have AS3 advertising 33.33.33.33/32 toward both AS1 and AS2. AS1 peers with AS64510 at R1, and AS2 peers with AS64510 at R8. On RR1 we have set IGP metric higher on the interface toward R8, and lower on the interface toward R1. And vice-versa for RR2, lower toward R8 and higher toward R1. 
 
