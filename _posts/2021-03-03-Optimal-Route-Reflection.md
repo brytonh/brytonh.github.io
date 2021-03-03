@@ -10,7 +10,7 @@ iBGP Route Reflection is an important technique used by many iBGP-enabled networ
 ## Topology 
 ![](/images/bgp-orr.png)
 
-The RR only sees it's point of view IGP-wise, not the view of the RR clients, by default. In our example, we have AS3 advertising 33.33.33.33/32 toward both AS1 and AS2. AS1 peers with AS64510 at R1, and AS2 peers with AS64510 as R2. On RR1 we have set IGP metric higher on the interface toward R8, and lower on the interface toward R1. And vice-versa for RR2, lower toward R8 and higher toward R1. 
+The RR only sees it's point of view IGP-wise, not the view of the RR clients, by default. In our example, we have AS3 advertising 33.33.33.33/32 toward both AS1 and AS2. AS1 peers with AS64510 at R1, and AS2 peers with AS64510 at R8. On RR1 we have set IGP metric higher on the interface toward R8, and lower on the interface toward R1. And vice-versa for RR2, lower toward R8 and higher toward R1. 
 
 You may already see where I'm going with this, I want RR1 to select R1's 33.33.33.33/32 advertisement for egress and I want RR2 to select R8's. Here's the output of "show route 33.33.33.33" on RR1 and RR2. 
 
@@ -137,7 +137,7 @@ inet.0: 31 destinations, 32 routes (31 active, 0 holddown, 0 hidden)
                 Router ID: 1.1.1.1
 ```
 
-Indeed, we see that RR1 seletcs active route toward R1 and RR2 selects R8 as egress. In detailed output, we see a reason for the non-active routes not being chosen under <span style="color:yellow">Inactive reason: IGP Metric"</span>
+Indeed, we see that RR1 seletcs active route toward R1 and RR2 selects R8 as egress. In detailed output, we see a reason for the non-active routes not being chosen under <span style="color:orange">Inactive reason: IGP Metric"</span>
 
 ---
 *Note*
@@ -421,7 +421,7 @@ However in testing I was not able to get my vMX running 19.3R2.9 to actually adv
 
 ### References 
 
-https://datatracker.ietf.org/doc/draft-ietf-idr-bgp-optimal-route-reflection/
+<a href="https://datatracker.ietf.org/doc/draft-ietf-idr-bgp-optimal-route-reflection/" target="_blank">
 
 https://tools.ietf.org/html/rfc4456
 
