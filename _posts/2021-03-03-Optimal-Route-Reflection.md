@@ -420,6 +420,9 @@ However in testing I was not able to get my vMX running 19.3R2.9 to actually adv
 
 ---
 
+### Configs
+Configs found <a href="/configs/bgp-orr.txt">here</a>
+
 ### References 
 
 <a href="https://datatracker.ietf.org/doc/draft-ietf-idr-bgp-optimal-route-reflection/" target="_blank">https://datatracker.ietf.org/doc/draft-ietf-idr-bgp-optimal-route-reflection/</a>
