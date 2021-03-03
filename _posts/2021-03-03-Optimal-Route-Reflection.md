@@ -140,7 +140,8 @@ inet.0: 31 destinations, 32 routes (31 active, 0 holddown, 0 hidden)
 Indeed, we see that RR1 seletcs active route toward R1 and RR2 selects R8 as egress. In detailed output, we see a reason for the non-active routes not being chosen under <span style="color:orange">Inactive reason: IGP Metric"</span>
 
 ---
-*Note*
+*NOTE*
+
 You see the RR selects the active route due to IGP cost/metric. You can see the full JunOS BGP path selection process <a href="https://www.juniper.net/documentation/en_US/junos/topics/reference/general/routing-protocols-address-representation.html" target="_blank">here</a>
 
 ---
