@@ -422,11 +422,11 @@ However in testing I was not able to get my vMX running 19.3R2.9 to actually adv
 
 ### References 
 
-<a href="https://datatracker.ietf.org/doc/draft-ietf-idr-bgp-optimal-route-reflection/" target="_blank">
+<a href="https://datatracker.ietf.org/doc/draft-ietf-idr-bgp-optimal-route-reflection/" target="_blank">https://datatracker.ietf.org/doc/draft-ietf-idr-bgp-optimal-route-reflection/</a>
 
-https://tools.ietf.org/html/rfc4456
+<a href="https://tools.ietf.org/html/rfc4456">https://tools.ietf.org/html/rfc4456</a>
 
-https://www.noction.com/blog/bgp-optimal-route-reflection-alternative-to-bgp-add-path
+<a href="https://www.noction.com/blog/bgp-optimal-route-reflection-alternative-to-bgp-add-path">https://www.noction.com/blog/bgp-optimal-route-reflection-alternative-to-bgp-add-path</a>
 
-https://www.juniper.net/documentation/en_US/junos/topics/topic-map/bgp-rr.html#id-understanding-bgp-optimal-route-reflection
+<a href="https://www.juniper.net/documentation/en_US/junos/topics/topic-map/bgp-rr.html#id-understanding-bgp-optimal-route-reflection">https://www.juniper.net/documentation/en_US/junos/topics/topic-map/bgp-rr.html#id-understanding-bgp-optimal-route-reflection</a>
 
