@@ -137,7 +137,7 @@ inet.0: 31 destinations, 32 routes (31 active, 0 holddown, 0 hidden)
                 Router ID: 1.1.1.1
 ```
 
-Indeed, we see that RR1 seletcs active route toward R1 and RR2 selects R8 as egress. In detailed output, we see a reason for the non-active routes not being chosen under <span style="color:orange">Inactive reason: IGP Metric"</span>
+Indeed, we see that RR1 selects active route toward R1 and RR2 selects R8 as egress. In detailed output, we see a reason for the non-active routes not being chosen under <span style="color:orange">Inactive reason: IGP Metric"</span>
 
 ---
 *NOTE*
@@ -475,7 +475,7 @@ inet.0: 33 destinations, 33 routes (33 active, 0 holddown, 0 hidden)
 ```
 
 ---
-## DISCLAIMER
+## AN ISSUE I HAD
 I had some significant issues when inet.3 was populated by LDP. The advertisements would not be that of the BGP-ORR calculated route. Instead, the advertisements would be from the RR's point of view again. My thought is that there is no mapping between IS-IS route next hop calculated in BGP-ORR and the active (preferred) LDP next hop route in inet.3. I'd imagine this is something that could easily be fixed in the future, being as BGP-ORR would provide very little value to SP's running L3VPN with a ASN:# naming conventioned for Route Distinguishers without the added inet.3 mapping functionality. 
 
 I started a conversation about this on <a href="https://www.reddit.com/r/Juniper/comments/lwymt8/bgporr_on_vmx/?utm_source=share&utm_medium=web2x&context=3" target="_blank">reddit</a> where a user helped me realize the inet.3 issue that I didn't expect right away. I assumed the IGP-LDP mapping would be there for these BGP-ORR calculations. 
