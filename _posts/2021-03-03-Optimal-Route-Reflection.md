@@ -476,7 +476,9 @@ inet.0: 33 destinations, 33 routes (33 active, 0 holddown, 0 hidden)
 
 ---
 ## AN ISSUE I HAD
-I had some significant issues when inet.3 was populated by LDP. The advertisements would not be that of the BGP-ORR calculated route. Instead, the advertisements would be from the RR's point of view again. My thought is that there is no mapping between IS-IS route next hop calculated in BGP-ORR and the active (preferred) LDP next hop route in inet.3. I'd imagine this is something that could easily be fixed in the future, being as BGP-ORR would provide very little value to SP's running L3VPN with a ASN:# naming conventioned for Route Distinguishers without the added inet.3 mapping functionality. <span style="color:blue">YES, you can workaround this by copying IS-IS routes into inet.3 with rib-group, or by changing resolution rib for bgp.l3vpn.0.. But I hardly consider that a fix.</span>
+I had some significant issues when inet.3 was populated by LDP. The advertisements would not be that of the BGP-ORR calculated route. Instead, the advertisements would be from the RR's point of view again. My thought is that there is no mapping between IS-IS route next hop calculated in BGP-ORR and the active (preferred) LDP next hop route in inet.3. I'd imagine this is something that could easily be fixed in the future, being as BGP-ORR would provide very little value to SP's running L3VPN with a ASN:# naming conventioned for Route Distinguishers without the added inet.3 mapping functionality. 
+
+<span style="color:blue">YES, you can workaround this by copying IS-IS routes into inet.3 with rib-group, or by changing resolution rib for bgp.l3vpn.0.. But I hardly consider that a fix.</span>
 
 I started a conversation about this on <a href="https://www.reddit.com/r/Juniper/comments/lwymt8/bgporr_on_vmx/?utm_source=share&utm_medium=web2x&context=3" target="_blank">reddit</a> where a user helped me realize the inet.3 issue that I didn't expect right away. I assumed the IGP-LDP mapping would be there for these BGP-ORR calculations. 
 
