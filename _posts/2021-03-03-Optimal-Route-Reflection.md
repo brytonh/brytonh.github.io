@@ -137,7 +137,7 @@ inet.0: 31 destinations, 32 routes (31 active, 0 holddown, 0 hidden)
                 Router ID: 1.1.1.1
 ```
 
-Indeed, we see that RR1 selects active route toward R1 and RR2 selects R8 as egress. In detailed output, we see a reason for the non-active routes not being chosen under <span style="color:orange">Inactive reason: IGP Metric"</span>
+Indeed, we see that RR1 selects active route toward R1 and RR2 selects R8 as egress. In detailed output, we see a reason for the non-active routes not being chosen under <span style="color:orange">"Inactive reason: IGP Metric"</span>
 
 ---
 *NOTE*
