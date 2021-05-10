@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-Network Engineer that loves learning and family. JNCIE-SP #3023, JNCIP-DC, JNCIP-ENT, MTCINE. 
+Network Engineer that loves learning and family. JNCIE-SP #3023, JNCIE-DC #401, JNCIP-ENT, MTCINE. 
 
 All blogs posts and thoughts are my own - not that of my employer.
 
