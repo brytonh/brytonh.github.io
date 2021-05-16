@@ -8,8 +8,6 @@ Network Engineer that loves learning and family. JNCIE-SP #3023, JNCIE-DC #401, 
 
 All blogs posts and thoughts are my own - not that of my employer.
 
-Mostly I like digging as deep into the technologies that interest me as possible. I'll gladly get down to packet-level if it helps me understand something better. I like finding creative ways to automate workflows both at my $dayjob or for independent projects, normally both involving networking somehow. 
-
 ### Resume
 
 Here's my <a href="/images/resume.pdf" target="_blank">resume.</a><br>
