@@ -20,21 +20,21 @@ It's a Saturday afternoon, and an alert goes through about a specific core P rou
 Or so I thought. Upon further look at the spam of alerts in slack, a PE router and the access switches hanging off of it were also down. Well that's not normal, that site has a backup wireless PTP link and power is most definitely up there. I can even login to the PE router via the loopback address. What gives? 
 
 ```
-bherdes@xyz> show ospf neighbor | grep .85 
+bherdes@P> show ospf neighbor | grep .85 
 100.64.1.98      ge-0/1/3.2998          Full      100.64.127.85      1    38
 ```
 
 I do a "show ospf neighbor" on the PE router and of course I see the neighbor P router that's on the other side of the wireless PTP in "full" state. Okay, and of course we are running MPLS - specifically LDP at this part of the network - and I see the neighborship operational with "show ldp neighbor".
 
 ```
-bherdes@xyz> show ldp neighbor | grep .85 
+bherdes@P> show ldp neighbor | grep .85 
 100.64.1.98        ge-0/1/3.2998      100.64.127.85:0          11
 ```
 
 However, I do NOT have LDP routes to the PE loopback from the border edges of the network. That LDP route is most definitely not making in there. 
 
 ```
-bherdes@xxyyzz> show route table inet.3 100.64.127.85/32 
+bherdes@Border1> show route table inet.3 100.64.127.85/32 
 
 inet.3: 49 destinations, 49 routes (49 active, 0 holddown, 0 hidden)
 + = Active Route, - = Last Active, * = Both
@@ -43,7 +43,7 @@ inet.3: 49 destinations, 49 routes (49 active, 0 holddown, 0 hidden)
 So, I login to the P router facing the PE via wireless PTP, and run a "show ldp database session 100.64.127.85"... This command is going to allow be to see the label mappings from the PE as well as my label mappings as this P router to the PE. 
 
 ```
-bherdes@xyz> show ldp database session 100.64.127.85 | no-more 
+bherdes@P> show ldp database session 100.64.127.85 | no-more 
 Input label database, 100.64.127.72:0--100.64.127.85:0
 
 Output label database, 100.64.127.72:0--100.64.127.85:0
