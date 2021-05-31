@@ -37,7 +37,7 @@ inet.3: 49 destinations, 49 routes (49 active, 0 holddown, 0 hidden)
 So, I login to the P router facing the PE via wireless PTP, and run a "show ldp database session 100.64.127.85"... This command is going to allow be to see the label mappings from the PE as well as my label mappings as this P router to the PE. 
 
 ```
-root@2101-SHERIFF-ACX> show ldp database session 100.64.127.85 | no-more 
+bherdes@xyz> show ldp database session 100.64.127.85 | no-more 
 Input label database, 100.64.127.72:0--100.64.127.85:0
 
 Output label database, 100.64.127.72:0--100.64.127.85:0
