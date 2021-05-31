@@ -56,7 +56,7 @@ Okay, wow that's a huge problem. From the perspective of the P router I'm receiv
 
 This is when I decided I wanted to run a packet trace and dig into the LDP messages. I started the packet trace via SPAN and filtered for port 646/tcp/udp for LDP on this specific interface. (LDP will use UDP/646 for hello's and discovery, and TCP/646 for FEC label exchange and next-hop address messages) 
 
-## Show me the Trace
+## Show Me the Trace
 
 <a href="/images/ldp_trace1.png" target="_blank"> <img src="/images/ldp_trace1.png"/></a>
 
@@ -84,7 +84,7 @@ Here is an LDP address message. It is basically sharing its available next hop I
 
 ---
 
-### Black and Red, Oh no
+### Black and Red, Oh No
 
  <a href="/images/ldp_fail.png" target="_blank"> <img src="/images/ldp_fail.png"/></a>
 
