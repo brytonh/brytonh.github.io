@@ -9,6 +9,8 @@ Join me in the replay of a troubleshooting scenario. This is my first post like 
 
 ---
 
+*TLDR;* Misconfigured L2 MTU on a PoE switch causes one-way LDP label mappings via TCP/646 adjacency. Easy find & confirm with a packet trace.
+
 It's a Saturday afternoon, and an alert goes through about a specific core P router going down in the network. It's a pure P router, and there's built in redundancy so it normally is not the biggest deal. I check with the electric side of the house in our company, and they say power will be restored soon to the location. Great! 
 
 Or so I thought. Upon further look at the spam of alerts in slack, a PE router and the access switches hanging off of it were also down. Well that's not normal, that site has a backup wireless PTP link and power is most definitely up there. I can even login to the PE router via the loopback address. What gives? 
