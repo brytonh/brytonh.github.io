@@ -90,7 +90,7 @@ Here is an LDP address message. It is basically sharing its available next hop I
 
 Ah, here's what you probably expected to see. We see TCP retransmissions here for the LDP mapping message from PE to P. Can you tell right away what could be the problem? 
 
-Pay close attention to the packet size, 4814 bytes. That's awfully large for normal standards using a 1500 IP MTU + MPLS + VLAN tag + Ethernet. Some background information: We use an L2 MTU in the core always of 9192. This is basically the standard everywhere. However, there was a problem in this specific case, what could be the cause? 
+Pay close attention to the packet size, 4814 bytes. That's awfully large for normal standards using a 1500 IP MTU + MPLS + VLAN tag + Ethernet. Notice the PE router is repeatedly retransmitting the large packet, because it isn't receiving any ACK from P router saying it received the data. Some background information: We use an L2 MTU in the core always of 9192. This is basically the standard everywhere. However, there was a problem in this specific case, what could be the cause? 
 
 When the wireless PTP installed, the technician used a L2 switch that could provide Passive PoE to the radio. When doing this, the technician did not raise the default L2 MTU from a value higher than the default of 1522. The routers on the ends of this link had an L2 MTU set of 9192, so they obviously were under the impression they could send much larger than 1522B frames. Because this was the routers' belief that they had a large L2 MTU to work with, they also believed they could send large IP MTU packets. That explains the 4814B packet being sent with many LDP label mappings.
 
