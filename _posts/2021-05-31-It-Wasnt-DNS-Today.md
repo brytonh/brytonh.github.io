@@ -9,7 +9,7 @@ Join me in the replay of a troubleshooting scenario. This is my first post like 
 
 ---
 
-*TLDR;* Misconfigured L2 MTU on a PoE switch causes one-way LDP label mappings via TCP/646 adjacency. Easy find & confirm with a packet trace. 
+***TLDR;*** Misconfigured L2 MTU on a PoE switch causes one-way LDP label mappings via TCP/646 adjacency. Easy find & confirm with a packet trace. 
 
 It's a Saturday afternoon, and an alert goes through about a specific core P router going down in the network. It's a pure P router, and there's built in redundancy so it normally is not the biggest deal. I check with the electric side of the house in our company, and they say power will be restored soon to the location. Great! 
 
@@ -101,7 +101,7 @@ The packet trace was basically my dead giveaway of what was happening. I realize
 - This can obviously happen with more than just LDP, take BGP (TCP/179) for example where this exact issue could also occur
 - Remember L2-only devices will just silently discard frames too large for their L2 MTU. Only L3 devices will send you ICMP messages describing packet too large. 
 
-- *Next time you're doing a circuit turn-up and a tech says "I can just put in a media converter", sometimes they actually mean a L2 switch, and every time that's the case L2 MTU will get messed up for your circuit.*
+- ***Next time you're doing a circuit turn-up and a tech says "I can just put in a media converter", sometimes they actually mean a L2 switch, and every time that's the case L2 MTU will get messed up for your circuit.***
 
 ### You made it this far 
 - I cut off certain parts of the packet trace for data sanitization, I didn't have a proper lab set up for this example
