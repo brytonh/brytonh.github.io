@@ -11,7 +11,7 @@ Join me in the replay of a troubleshooting scenario. This is my first post like 
 
 **TLDR 1.1; Misconfigured L2 MTU on a PoE switch causes one-way LDP label mappings via TCP/646 adjacency. Easy find & confirm with a packet trace.**
 
-**TLDR 1.2; Next time you’re doing a circuit turn-up and a tech says “I can just put in a media converter”, sometimes they actually mean a L2 switch, and every time that’s the case L2 MTU will get messed up for your circuit.**
+**TLDR 1.2; Next time you’re doing a circuit turn-up and a tech says “I can just put in a media converter”, sometimes they actually mean a L2 switch, and every time that’s the case L2 MTU will get messed up.**
 
 ---
 
