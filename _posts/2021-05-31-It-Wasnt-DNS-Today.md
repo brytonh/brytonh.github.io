@@ -82,6 +82,8 @@ Here is an LDP address message. It is basically sharing its available next hop I
 
 ---
 
+### Black and Red, Oh no
+
  <a href="/images/ldp_fail.png" target="_blank"> <img src="/images/ldp_fail.png"/></a>
 
 Ah, here's what you probably expected to see. We see TCP retransmissions here for the LDP mapping message from PE to P. Can you tell right away what could be the problem? 
