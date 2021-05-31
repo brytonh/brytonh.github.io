@@ -3,9 +3,15 @@ layout: post
 title: Today, It wasn't DNS 
 --- 
 
-But it was MTU. 
+*But it was MTU.*
 
 Join me in the replay of a troubleshooting scenario. This is my first post like this, so join me and we'll see if it's any good. 
+
+---
+
+**TLDR 1.1; Misconfigured L2 MTU on a PoE switch causes one-way LDP label mappings via TCP/646 adjacency. Easy find & confirm with a packet trace.**
+
+**TLDR 1.2; Next time you’re doing a circuit turn-up and a tech says “I can just put in a media converter”, sometimes they actually mean a L2 switch, and every time that’s the case L2 MTU will get messed up.**
 
 ---
 
@@ -14,21 +20,21 @@ It's a Saturday afternoon, and an alert goes through about a specific core P rou
 Or so I thought. Upon further look at the spam of alerts in slack, a PE router and the access switches hanging off of it were also down. Well that's not normal, that site has a backup wireless PTP link and power is most definitely up there. I can even login to the PE router via the loopback address. What gives? 
 
 ```
-bherdes@xyz> show ospf neighbor | grep .85 
+bherdes@P> show ospf neighbor | grep .85 
 100.64.1.98      ge-0/1/3.2998          Full      100.64.127.85      1    38
 ```
 
 I do a "show ospf neighbor" on the PE router and of course I see the neighbor P router that's on the other side of the wireless PTP in "full" state. Okay, and of course we are running MPLS - specifically LDP at this part of the network - and I see the neighborship operational with "show ldp neighbor".
 
 ```
-bherdes@xyz> show ldp neighbor | grep .85 
+bherdes@P> show ldp neighbor | grep .85 
 100.64.1.98        ge-0/1/3.2998      100.64.127.85:0          11
 ```
 
 However, I do NOT have LDP routes to the PE loopback from the border edges of the network. That LDP route is most definitely not making in there. 
 
 ```
-bherdes@xxyyzz> show route table inet.3 100.64.127.85/32 
+bherdes@Border1> show route table inet.3 100.64.127.85/32 
 
 inet.3: 49 destinations, 49 routes (49 active, 0 holddown, 0 hidden)
 + = Active Route, - = Last Active, * = Both
@@ -37,7 +43,7 @@ inet.3: 49 destinations, 49 routes (49 active, 0 holddown, 0 hidden)
 So, I login to the P router facing the PE via wireless PTP, and run a "show ldp database session 100.64.127.85"... This command is going to allow be to see the label mappings from the PE as well as my label mappings as this P router to the PE. 
 
 ```
-bherdes@xyz> show ldp database session 100.64.127.85 | no-more 
+bherdes@P> show ldp database session 100.64.127.85 | no-more 
 Input label database, 100.64.127.72:0--100.64.127.85:0
 
 Output label database, 100.64.127.72:0--100.64.127.85:0
@@ -54,7 +60,7 @@ Okay, wow that's a huge problem. From the perspective of the P router I'm receiv
 
 This is when I decided I wanted to run a packet trace and dig into the LDP messages. I started the packet trace via SPAN and filtered for port 646/tcp/udp for LDP on this specific interface. (LDP will use UDP/646 for hello's and discovery, and TCP/646 for FEC label exchange and next-hop address messages) 
 
-## Show me the Trace
+## Show Me the Trace
 
 <a href="/images/ldp_trace1.png" target="_blank"> <img src="/images/ldp_trace1.png"/></a>
 
@@ -72,7 +78,7 @@ LDP follows the IGP, always. Have you ever wondered how this works? How does an 
 
 <a href="/images/ldp_address.png" target="_blank"> <img src="/images/ldp_address.png"/></a>
 
-Here is an LDP address message from one of the neighbors. It is basically sharing its available next hop IP addresses to its LDP neighbors. By doing this, an LDP-enabled router can look at the LDP mapping from a neighbor for a prefix, and check the RIB to see if the prefix is actually found with a next hop matching one of these addresses. If so, we program that in our LFIB. 
+Here is an LDP address message. It is basically sharing its available next hop IP addresses to its LDP peers. By doing this, an LDP-enabled router can look at the LDP mapping from a neighbor for a prefix, and check the RIB to see if the prefix is actually found with a next hop matching one of these addresses. If so, we program that in our LFIB. 
 
 ### LDP Label Mapping
 
@@ -82,20 +88,26 @@ Here is an LDP address message from one of the neighbors. It is basically sharin
 
 ---
 
+### Black and Red, Oh No
+
  <a href="/images/ldp_fail.png" target="_blank"> <img src="/images/ldp_fail.png"/></a>
 
 Ah, here's what you probably expected to see. We see TCP retransmissions here for the LDP mapping message from PE to P. Can you tell right away what could be the problem? 
 
-Pay close attention to the packet size, 4814 bytes. That's awfully large for normal standards using a 1500 IP MTU + MPLS + VLAN tag + Ethernet. Some background information: We use an L2 MTU in the core always of 9192. This is basically the standard everywhere. However, there was a problem in this specific case, what could be the cause? 
+Pay close attention to the packet size, 4814 bytes. That's awfully large for normal standards using a 1500 IP MTU + MPLS + VLAN tag + Ethernet. Notice the PE router is repeatedly retransmitting the large packet, because it isn't receiving any ACK from P router saying it received the data. Some background information: We use an L2 MTU in the core always of 9192. This is basically the standard everywhere. However, there was a problem in this specific case, what could be the cause? 
 
-When the wireless PTP installed, the technician used a L2 switch that could provide Passive PoE to the radio. When doing this, the technician did not raise the default L2 MTU from a value higher than the default of 1522. The routers on the ends of this link had an L2 MTU set of 9192, so they obviously were under the impression they could send much larger than 1522B frames. Because this was the routers' belief that they had a large L2 MTU to work with, they also believed they could send large IP MTU packets. That explains the 4814B packet being sent with many LDP label mappings.
+**When the wireless PTP installed, the technician used a L2 switch that could provide Passive PoE to the radio. When doing this, the technician did not raise the default L2 MTU from a value higher than the default of 1522. The routers on the ends of this link had an L2 MTU set of 9192, so they obviously were under the impression they could send much larger than 1522B frames. Because this was the routers' belief that they had a large L2 MTU to work with, they also believed they could send large IP MTU packets. That explains the 4814B packet being sent with many LDP label mappings.**
 
-The packet trace was basically my dead giveaway of what was happening. I realized what had been done by the techs in this situation with the L2 switch for PoE, I was able to make the adjustments to L2 MTU on said switch, and there was no longer an issue with the intermediate switch silently discarding large/jumbo frames. For someone new, you may wonder how this wasn't caught sooner - well this was strictly a backup wireless link as mentioned earlier. Let this serve as a reminder to always find a way to thoroughly test and monitor your redundant links, because when you need them you'd really like for them to work and perform well.
+The packet trace was basically my dead giveaway of what was happening. I realized what had been done by the techs in this situation with the L2 switch for PoE, I was able to make the adjustments to L2 MTU on said switch, and there was no longer an issue with the intermediate switch silently discarding large/jumbo frames. For someone new, you may wonder how this wasn't caught sooner - well this was strictly a backup wireless link as mentioned earlier. **Let this serve as a reminder to always find a way to thoroughly test and monitor your redundant links, because when you need them you'd really like for them to work and perform well.**
 
-### Last Comments 
+---
+
+## Last Comments 
 - To someone who hasn't ran into this before, you may have assumed there wouldn't be an issue because an OSPF adjacency comes up and that relies on MTU right? Well, yeah kind of. OSPF did come up, because in the DBD OSFP packet the MTU's of each router did match (9192B) But that is just a described value in the OSPF packets, it doesn't describe *actual forwarding ability*
 - This can obviously happen with more than just LDP, take BGP (TCP/179) for example where this exact issue could also occur
 - Remember L2-only devices will just silently discard frames too large for their L2 MTU. Only L3 devices will send you ICMP messages describing packet too large. 
+
+- **Next time you're doing a circuit turn-up and a tech says "I can just put in a media converter", sometimes they actually mean a L2 switch, and every time that's the case L2 MTU will get messed up for your circuit.**
 
 ### You made it this far 
 - I cut off certain parts of the packet trace for data sanitization, I didn't have a proper lab set up for this example
