@@ -3,7 +3,7 @@ layout: post
 title: Today, It wasn't DNS 
 --- 
 
-But it was MTU. 
+*But it was MTU.*
 
 Join me in the replay of a troubleshooting scenario. This is my first post like this, so join me and we'll see if it's any good. 
 
