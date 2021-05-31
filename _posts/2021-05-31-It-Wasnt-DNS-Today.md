@@ -96,7 +96,9 @@ When the wireless PTP installed, the technician used a L2 switch that could prov
 
 The packet trace was basically my dead giveaway of what was happening. I realized what had been done by the techs in this situation with the L2 switch for PoE, I was able to make the adjustments to L2 MTU on said switch, and there was no longer an issue with the intermediate switch silently discarding large/jumbo frames. For someone new, you may wonder how this wasn't caught sooner - well this was strictly a backup wireless link as mentioned earlier. Let this serve as a reminder to always find a way to thoroughly test and monitor your redundant links, because when you need them you'd really like for them to work and perform well.
 
-### Last Comments 
+---
+
+## Last Comments 
 - To someone who hasn't ran into this before, you may have assumed there wouldn't be an issue because an OSPF adjacency comes up and that relies on MTU right? Well, yeah kind of. OSPF did come up, because in the DBD OSFP packet the MTU's of each router did match (9192B) But that is just a described value in the OSPF packets, it doesn't describe *actual forwarding ability*
 - This can obviously happen with more than just LDP, take BGP (TCP/179) for example where this exact issue could also occur
 - Remember L2-only devices will just silently discard frames too large for their L2 MTU. Only L3 devices will send you ICMP messages describing packet too large. 
