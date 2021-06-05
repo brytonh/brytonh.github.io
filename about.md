@@ -18,6 +18,7 @@ I may not be looking, but this information is publicly available here or via <a 
 <a href="https://gestaltit.com/tech-field-day/matt/meet-field-day-delegate-bryton-herdes/" target="_blank">https://gestaltit.com/tech-field-day/matt/meet-field-day-delegate-bryton-herdes/</a><br>
 <a href="https://www.juniper.net/us/en/company/case-studies-customer-success/jackson-electric-cooperative/" target="_blank">https://www.juniper.net/us/en/company/case-studies-customer-success/jackson-electric-cooperative/</a><br>
 <a href="https://newsroom.juniper.net/news/news-details/2020/Juniper-Networks-Will-Deliver-Fourth-Generation-AI-Driven-Enterprise-with-New-WAN-Assurance-Service-and-Marvis-VNA-Conversational-Interface/default.aspx" target="_blank">https://newsroom.juniper.net/news/news-details/2020/Juniper-Networks-Will-Deliver-Fourth-Generation-AI-Driven-Enterprise-with-New-WAN-Assurance-Service-and-Marvis-VNA-Conversational-Interface/default.aspx</a>
+<a href="https://gestaltit.com/favorites/tom/today-it-wasnt-dns/" target="_blank">https://gestaltit.com/favorites/tom/today-it-wasnt-dns/</a>
 
 
 ### Contact me
