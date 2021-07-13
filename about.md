@@ -11,7 +11,6 @@ All blogs posts and thoughts are my own - not that of my employer.
 ### Resume
 
 Here's my <a href="/images/resume.pdf" target="_blank">resume.</a><br>
-I may not be looking, but this information is publicly available here or via <a href="https://linkedin.com/in/brytonjherdes" target="blank">LinkedIn</a>
 
 ### Links where I am quoted/mentioned
 <a href="https://techfieldday.com/people/bryton-herdes/" target="_blank">https://techfieldday.com/people/bryton-herdes/</a><br>
